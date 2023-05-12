@@ -12,4 +12,10 @@ public class TestController {
     public String hello() {
         return "Test Web";
     }
+
+
+    @GetMapping("test1")
+    public void test1() {
+        
+    }
 }

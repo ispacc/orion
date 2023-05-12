@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: rm-cn-zxu37mhva000feho.rwlb.rds.aliyuncs.com
+    username: root
+    password: Goodwell99!
