@@ -1,5 +1,22 @@
 spring:
   datasource:
-    url: rm-cn-zxu37mhva000feho.rwlb.rds.aliyuncs.com
+    url: jdbc:mysql://rm-cn-zxu37mhva000feho.rwlb.rds.aliyuncs.com:3306/orion?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
-    password: Goodwell99!
+    password: Goodwell99
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: io.ispacc.orion.admin
+  default-flat-param-object: true
+
+knife4j:
+  enable: true
