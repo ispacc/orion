@@ -15,6 +15,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public List<UmsMember> test1() {
+
         return umsMemberMapper.selectList(null);
     }
 

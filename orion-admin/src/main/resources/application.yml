@@ -1,22 +1,25 @@
+server:
+  port: 80
 spring:
   datasource:
     url: jdbc:mysql://rm-cn-zxu37mhva000feho.rwlb.rds.aliyuncs.com:3306/orion?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: Goodwell99
+  redis:
+    host: r-bp1yfwh6hywku5hhhcpd.redis.rds.aliyuncs.com # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password: Goodwell99 # Redis服务器连接密码（默认为空）
+    timeout: 300ms # 连接超时时间（毫秒）
 
-
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-    tags-sorter: alpha
-    operations-sorter: alpha
-  api-docs:
-    path: /v3/api-docs
-  group-configs:
-    - group: 'default'
-      paths-to-match: '/**'
-      packages-to-scan: io.ispacc.orion.admin
-  default-flat-param-object: true
 
 knife4j:
   enable: true
+  basic:
+    enable: true
+    username: root
+    password: root
+  setting:
+    swagger-model-name: 数据模型
+    enable-version: true
+    enable-footer: false

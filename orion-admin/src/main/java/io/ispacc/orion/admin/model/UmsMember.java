@@ -5,14 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "用户 数据传输对象")
+@Schema(name = "会员信息")
 public class UmsMember implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private Long id;
 
     private Long memberLevelId;
@@ -20,54 +25,52 @@ public class UmsMember implements Serializable {
     @Schema(description = "用户名")
     private String username;
 
-    @Schema(title = "密码")
+    @Schema(description = "密码")
     private String password;
 
-    @Schema(title = "昵称")
+    @Schema(description = "昵称")
     private String nickname;
 
-    @Schema(title = "手机号码")
+    @Schema(description = "手机号码")
     private String phone;
 
-    @Schema(title = "帐号启用状态:0->禁用；1->启用")
+    @Schema(description = "帐号启用状态:0->禁用；1->启用")
     private Integer status;
 
-    @Schema(title = "注册时间")
+    @Schema(description = "注册时间")
     private Date createTime;
 
-    @Schema(title = "头像")
+    @Schema(description = "头像")
     private String icon;
 
-    @Schema(title = "性别：0->未知；1->男；2->女")
+    @Schema(description = "性别：0->未知；1->男；2->女")
     private Integer gender;
 
-    @Schema(title = "生日")
+    @Schema(description = "生日")
     private Date birthday;
 
-    @Schema(title = "所做城市")
+    @Schema(description = "所做城市")
     private String city;
 
-    @Schema(title = "职业")
+    @Schema(description = "职业")
     private String job;
 
-    @Schema(title = "个性签名")
+    @Schema(description = "个性签名")
     private String personalizedSignature;
 
-    @Schema(title = "用户来源")
+    @Schema(description = "用户来源")
     private Integer sourceType;
 
-    @Schema(title = "积分")
+    @Schema(description = "积分")
     private Integer integration;
 
-    @Schema(title = "成长值")
+    @Schema(description = "成长值")
     private Integer growth;
 
-    @Schema(title = "剩余抽奖次数")
+    @Schema(description = "剩余抽奖次数")
     private Integer luckeyCount;
 
-    @Schema(title = "历史积分数量")
+    @Schema(description = "历史积分数量")
     private Integer historyIntegration;
-
-    private static final long serialVersionUID = 1L;
 
 }
