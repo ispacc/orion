@@ -1,16 +1,23 @@
 server:
   port: 80
 spring:
+  data:
+    redis:
+      host: r-bp1yfwh6hywku5hhhcpd.redis.rds.aliyuncs.com # Redis服务器地址
+      database: 0 # Redis数据库索引（默认为0）
+      port: 6379 # Redis服务器连接端口
+      password: Goodwell99 # Redis服务器连接密码（默认为空）
+      timeout: 300ms # 连接超时时间（毫秒）
+      pool:
+        max-active: 100 #连接池最大连接数（负值表示没有限制）
+        max-wait: 3000 #连接池最大阻塞等待时间（负值表示没有限制）
+        max-idle: 200 #连接池最大空闭连接数
+        min-idle: 50 #连接汉最小空闲连接数
+        timeout: 600 #连接超时时间（毫秒）
   datasource:
     url: jdbc:mysql://rm-cn-zxu37mhva000feho.rwlb.rds.aliyuncs.com:3306/orion?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: Goodwell99
-  redis:
-    host: r-bp1yfwh6hywku5hhhcpd.redis.rds.aliyuncs.com # Redis服务器地址
-    database: 0 # Redis数据库索引（默认为0）
-    port: 6379 # Redis服务器连接端口
-    password: Goodwell99 # Redis服务器连接密码（默认为空）
-    timeout: 300ms # 连接超时时间（毫秒）
 
 
 knife4j:

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("io.ispacc.orion.admin.mapper")
+@MapperScan("io.ispacc.orion.admin.dao")
 public class OrionAdminApplication {
 
     public static void main(String[] args) {
