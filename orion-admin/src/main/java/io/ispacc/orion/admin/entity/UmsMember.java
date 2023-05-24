@@ -1,22 +1,17 @@
-package io.ispacc.orion.admin.model;
+package io.ispacc.orion.admin.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(name = "会员信息")
-public class UmsMember implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class UmsMember {
 
     private Long id;
 

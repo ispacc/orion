@@ -1,7 +1,7 @@
 package io.ispacc.orion.admin.controller;
 
 import io.ispacc.orion.admin.entity.UmsAdmin;
-import io.ispacc.orion.admin.model.UmsMember;
+import io.ispacc.orion.admin.entity.UmsMember;
 import io.ispacc.orion.admin.service.TestService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +36,6 @@ public class TestController {
         log.info("------");
         return testService.test1();
     }
-
 
     @GetMapping("test2")
     public List<UmsAdmin> test2() {

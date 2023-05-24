@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.dao;
+package io.ispacc.orion.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.ispacc.orion.admin.entity.UmsAdmin;
@@ -14,7 +14,7 @@ import java.util.List;
  * @since 2023-05-20 23:44:31
  */
 @Repository
-public interface UmsAdminDao extends BaseMapper<UmsAdmin> {
+public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
 
     /**
      * 批量新增数据（MyBatis原生foreach方法）

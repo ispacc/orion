@@ -1,7 +1,7 @@
 package io.ispacc.orion.admin.service;
 
 import io.ispacc.orion.admin.entity.UmsAdmin;
-import io.ispacc.orion.admin.model.UmsMember;
+import io.ispacc.orion.admin.entity.UmsMember;
 
 import java.util.List;
 

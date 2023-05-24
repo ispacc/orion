@@ -1,7 +1,7 @@
 package io.ispacc.orion.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.ispacc.orion.admin.model.UmsMember;
+import io.ispacc.orion.admin.entity.UmsMember;
 import org.springframework.stereotype.Repository;
 
 @Repository

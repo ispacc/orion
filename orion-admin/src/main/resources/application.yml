@@ -8,12 +8,16 @@ spring:
       port: 6379 # Redis服务器连接端口
       password: Goodwell99 # Redis服务器连接密码（默认为空）
       timeout: 300ms # 连接超时时间（毫秒）
-      pool:
-        max-active: 100 #连接池最大连接数（负值表示没有限制）
-        max-wait: 3000 #连接池最大阻塞等待时间（负值表示没有限制）
-        max-idle: 200 #连接池最大空闭连接数
-        min-idle: 50 #连接汉最小空闲连接数
-        timeout: 600 #连接超时时间（毫秒）
+      lettuce:
+        pool:
+          # 连接池中的最小空闲连接
+          min-idle: 0
+          # 连接池中的最大空闲连接
+          max-idle: 8
+          # 连接池的最大数据库连接数
+          max-active: 8
+          # #连接池最大阻塞等待时间（使用负值表示没有限制）
+          max-wait: -1ms
   datasource:
     url: jdbc:mysql://rm-cn-zxu37mhva000feho.rwlb.rds.aliyuncs.com:3306/orion?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
@@ -30,3 +34,18 @@ knife4j:
     swagger-model-name: 数据模型
     enable-version: true
     enable-footer: false
+
+mybatis-plus:
+  # 设置Mapper接口所对应的XML文件位置，如果你在Mapper接口中有自定义方法，需要进行该配置
+  mapper-locations: classpath*:mapper/*.xml
+  # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
+  type-aliases-package: io.ispacc.orion.admin.entity
+  configuration:
+    # 控制台sql打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志配置
+logging:
+  level:
+    io.ispacc.orion.admin.service.impl: debug
+    org.springframework: warn
