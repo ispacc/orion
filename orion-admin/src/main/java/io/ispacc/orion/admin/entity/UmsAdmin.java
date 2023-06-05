@@ -12,7 +12,6 @@ import java.util.Date;
  * @author ispacc
  * @since 2023-05-20 23:44:31
  */
-@SuppressWarnings("serial")
 public class UmsAdmin extends Model<UmsAdmin> {
 
     private Long id;
