@@ -15,6 +15,9 @@
 
     <name>orion-admin</name>
     <description>orion-admin</description>
+    <dependencies>
+
+    </dependencies>
 
 
 </project>
