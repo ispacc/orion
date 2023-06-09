@@ -1,5 +1,6 @@
 package io.ispacc.orion.admin.service.impl;
 
+import cn.hutool.jwt.JWTUtil;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import io.ispacc.orion.admin.dto.UserParam;
 import io.ispacc.orion.admin.entity.User;
@@ -15,19 +16,10 @@ import java.util.List;
 @Slf4j
 public class AdminServiceImpl implements AdminService {
 
-
     private final UserMapper userMapper;
 
     public AdminServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
-    }
-
-    @Override
-    public String login(String username, String password) {
-        String token = null;
-//        密码需要客户端加密后传递
-
-        return token;
     }
 
     @Override
@@ -45,4 +37,16 @@ public class AdminServiceImpl implements AdminService {
         userMapper.insert(user);
         return user;
     }
+
+
+    @Override
+    public String login(String username, String password) {
+        String token = null;
+//        密码需要客户端加密后传递
+        JWTUtil.createToken()
+
+        return token;
+    }
+
+
 }
