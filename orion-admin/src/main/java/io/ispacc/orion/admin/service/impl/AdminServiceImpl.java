@@ -1,11 +1,11 @@
 package io.ispacc.orion.admin.service.impl;
 
-import cn.hutool.jwt.JWTUtil;
-import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.ispacc.orion.admin.dto.UserParam;
 import io.ispacc.orion.admin.entity.User;
 import io.ispacc.orion.admin.mapper.UserMapper;
 import io.ispacc.orion.admin.service.AdminService;
+import io.ispacc.orion.admin.utils.JWTUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class AdminServiceImpl implements AdminService {
         BeanUtils.copyProperties(userParam, user);
         user.setStatus(1);
         //  查询是否有相同用户名的用户
-        List<User> list = new LambdaQueryChainWrapper<>(userMapper).eq(User::getUsername, user.getUsername()).list();
+        List<User> list = userMapper.selectList(new LambdaQueryWrapper<User>().eq(User::getUsername, user.getUsername()));
         if (list.size() > 0) {
             return null;
         }
@@ -43,8 +43,11 @@ public class AdminServiceImpl implements AdminService {
     public String login(String username, String password) {
         String token = null;
 //        密码需要客户端加密后传递
-        JWTUtil.createToken()
-
+        User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, username).eq(User::getPassword, password));
+        if (user == null) {
+            return null;
+        }
+        token = JWTUtils.createToken(user);
         return token;
     }
 
