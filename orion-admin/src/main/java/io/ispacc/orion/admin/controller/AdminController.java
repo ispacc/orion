@@ -5,7 +5,6 @@ import io.ispacc.orion.admin.dto.UserParam;
 import io.ispacc.orion.admin.entity.User;
 import io.ispacc.orion.admin.service.AdminService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +21,11 @@ public class AdminController {
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
-    @Autowired
-    private AdminService adminService;
+    private final AdminService adminService;
+
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
+    }
 
     @Operation(description = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -33,7 +35,7 @@ public class AdminController {
         if (user == null) {
             return CommonResult.failed();
         }
-        return CommonResult.success(user);
+        return CommonResult.success(null);
     }
 
 

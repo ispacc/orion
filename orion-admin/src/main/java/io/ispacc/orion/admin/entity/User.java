@@ -1,7 +1,7 @@
 package io.ispacc.orion.admin.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,13 +17,13 @@ import java.time.LocalDateTime;
  * @since 2023-06-08 14:44:08
  */
 @EqualsAndHashCode(callSuper = true)
-@SuppressWarnings("serial")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName("t_user")
 public class User extends Model<User> {
     //用户ID
-    @TableId(value = "user_id", type = IdType.AUTO)
+    @TableId
     private Long userId;
     //用户名
     private String username;
@@ -40,7 +40,6 @@ public class User extends Model<User> {
     //创建时间
     private LocalDateTime timeCreate;
     //更新时间
-
     private LocalDateTime timeUpdate;
     //备注
     private String remark;

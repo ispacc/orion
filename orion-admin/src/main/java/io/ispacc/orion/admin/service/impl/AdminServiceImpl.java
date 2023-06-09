@@ -1,5 +1,6 @@
 package io.ispacc.orion.admin.service.impl;
 
+import io.ispacc.orion.admin.common.Asserts;
 import io.ispacc.orion.admin.dto.UserParam;
 import io.ispacc.orion.admin.entity.User;
 import io.ispacc.orion.admin.mapper.UserMapper;
@@ -7,6 +8,9 @@ import io.ispacc.orion.admin.service.AdminService;
 import io.ispacc.orion.admin.utils.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,34 +34,29 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public String login(String username, String password) {
         String token = null;
-        //密码需要客户端加密后传递
-//        try {
-//            UserDetails userDetails = loadUserByUsername(username);
-//            if (!passwordEncoder.matches(password, userDetails.getPassword())) {
-//                Asserts.fail("密码不正确");
-//            }
-//            if (!userDetails.isEnabled()) {
-//                Asserts.fail("帐号已被禁用");
-//            }
-//            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
-//            token = jwtTokenUtil.generateToken(userDetails);
-////            updateLoginTimeByUsername(username);
+//        密码需要客户端加密后传递
+        try {
+            UserDetails userDetails = loadUserByUsername(username);
+            if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+                Asserts.fail("密码不正确");
+            }
+            if (!userDetails.isEnabled()) {
+                Asserts.fail("帐号已被禁用");
+            }
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            token = jwtTokenUtil.generateToken(userDetails);
+//            updateLoginTimeByUsername(username);
 //            insertLoginLog(username);
-//        } catch (AuthenticationException e) {
-//            log.warn("登录异常:{}", e.getMessage());
-//        }
+        } catch (AuthenticationException e) {
+            log.warn("登录异常:{}", e.getMessage());
+        }
         return token;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        //获取用户信息
-//        User admin = getAdminByUsername(username);
-//        if (admin != null) {
-//            List<UmsResource> resourceList = getResourceList(admin.getId());
-//            return new AdminUserDetails(admin, resourceList);
-//        }
+//        获取用户信息
         throw new UsernameNotFoundException("用户名或密码错误");
     }
 
@@ -77,6 +76,6 @@ public class AdminServiceImpl implements AdminService {
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
         userMapper.insert(user);
-        return null;
+        return user;
     }
 }
