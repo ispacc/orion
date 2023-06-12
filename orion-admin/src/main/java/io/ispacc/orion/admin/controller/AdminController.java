@@ -7,13 +7,16 @@ import io.ispacc.orion.admin.service.AdminService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("api/admin")
 public class AdminController {
 
     @Value("${jwt.tokenHeader}")
@@ -28,8 +31,7 @@ public class AdminController {
     }
 
     @Operation(description = "用户注册")
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    @ResponseBody
+    @PostMapping("register")
     public CommonResult<User> register(@Validated @RequestBody UserParam userParam) {
         User user = adminService.register(userParam);
         if (user == null) {
@@ -39,7 +41,7 @@ public class AdminController {
     }
 
 
-    @PostMapping()
+    @PostMapping("login")
     public CommonResult login(@Validated @RequestBody UserParam userParam) {
         String token = adminService.login(userParam.getUsername(), userParam.getPassword());
         if (token == null) {
