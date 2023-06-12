@@ -1,6 +1,8 @@
 server:
-  port: 80
+  port: 8081
 spring:
+  application:
+    name: orion-admin
   data:
     redis:
       host: r-bp1yfwh6hywku5hhhcpd.redis.rds.aliyuncs.com # Redis服务器地址
