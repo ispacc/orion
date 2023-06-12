@@ -4,7 +4,6 @@ import io.ispacc.orion.admin.common.CommonResult;
 import io.ispacc.orion.admin.module.admin.dto.UserParam;
 import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.admin.service.AdminService;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +29,6 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @Operation(description = "用户注册")
     @PostMapping("register")
     public CommonResult<User> register(@Validated @RequestBody UserParam userParam) {
         User user = adminService.register(userParam);

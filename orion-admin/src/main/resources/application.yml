@@ -42,25 +42,25 @@ knife4j:
     enable-version: true
     enable-footer: false
 
-secure:
-  ignored:
-    urls: #安全路径白名单
-      - /swagger-ui/
-      - /swagger-resources/**
-      - /**/v3/api-docs
-      - /**/*.html
-      - /**/*.js
-      - /**/*.css
-      - /**/*.png
-      - /**/*.map
-      - /favicon.ico
-      - /actuator/**
-      - /druid/**
-      - /admin/login
-      - /admin/register
-      - /admin/info
-      - /admin/logout
-      - /minio/upload
+#secure:
+#  ignored:
+#    urls: #安全路径白名单
+#      - /swagger-ui/
+#      - /swagger-resources/**
+#      - /**/v3/api-docs
+#      - /**/*.html
+#      - /**/*.js
+#      - /**/*.css
+#      - /**/*.png
+#      - /**/*.map
+#      - /favicon.ico
+#      - /actuator/**
+#      - /druid/**
+#      - /admin/login
+#      - /admin/register
+#      - /admin/info
+#      - /admin/logout
+#      - /minio/upload
 
 mybatis-plus:
   # 设置Mapper接口所对应的XML文件位置，如果你在Mapper接口中有自定义方法，需要进行该配置
