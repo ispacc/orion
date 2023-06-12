@@ -1,10 +1,10 @@
-package io.ispacc.orion.admin.service.impl;
+package io.ispacc.orion.admin.module.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import io.ispacc.orion.admin.dto.UserParam;
-import io.ispacc.orion.admin.entity.User;
-import io.ispacc.orion.admin.mapper.UserMapper;
-import io.ispacc.orion.admin.service.AdminService;
+import io.ispacc.orion.admin.module.admin.dto.UserParam;
+import io.ispacc.orion.admin.module.admin.entity.User;
+import io.ispacc.orion.admin.module.admin.mapper.UserMapper;
+import io.ispacc.orion.admin.module.admin.service.AdminService;
 import io.ispacc.orion.admin.utils.JWTUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

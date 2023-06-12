@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.dto;
+package io.ispacc.orion.admin.module.admin.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

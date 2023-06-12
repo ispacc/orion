@@ -2,7 +2,7 @@ package io.ispacc.orion.admin.utils;
 
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.signers.JWTSigner;
-import io.ispacc.orion.admin.entity.User;
+import io.ispacc.orion.admin.module.admin.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;

@@ -1,7 +1,7 @@
-package io.ispacc.orion.admin.service;
+package io.ispacc.orion.admin.module.admin.service;
 
-import io.ispacc.orion.admin.dto.UserParam;
-import io.ispacc.orion.admin.entity.User;
+import io.ispacc.orion.admin.module.admin.dto.UserParam;
+import io.ispacc.orion.admin.module.admin.entity.User;
 
 public interface AdminService {
 
