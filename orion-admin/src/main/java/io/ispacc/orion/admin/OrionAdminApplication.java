@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableCaching
-@MapperScan("io.ispacc.orion.admin.mapper")
+@MapperScan("io.ispacc.orion.admin")
 public class OrionAdminApplication {
 
     public static void main(String[] args) {
