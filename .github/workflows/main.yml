@@ -22,7 +22,7 @@ jobs:
         run: mvn clean package
 
       - name: Set up Alibaba Cloud CLI
-        uses: aliyun/github-actions/setup-cli@v1
+        uses: aikin-vip/setup-aliyun-cli@v2.0.0
         with:
           access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
           access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
