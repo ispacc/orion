@@ -18,7 +18,7 @@ import java.util.Objects;
  */
 
 @Controller
-public class ChatController {
+public class ChatMessageController {
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
