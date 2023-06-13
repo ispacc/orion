@@ -1,0 +1,43 @@
+name: Java Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: centos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+
+      - name: Build and package Java application
+        run: mvn clean package
+
+      - name: Set up Alibaba Cloud CLI
+        uses: aliyun/github-actions/setup-cli@v1
+        with:
+          access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+          region: 'cn-hangzhou'
+
+      - name: Connect to ECS instance
+        run: aliyun ecs Connect --instance-name i-bp150eywwgmb4t05ji2l
+
+      - name: Upload JAR file to ECS instance
+        run: |
+          #          aliyun oss cp ./target/orion-admin-0.0.1.jar oss://<YOUR_BUCKET_NAME>/orion-admin-0.0.1.jar
+               aliyun ecs UploadFile --instance-name i-bp150eywwgmb4t05ji2l --local-path ./target/orion-admin-0.0.1.jar --remote-path /home/admin/orion-admin-0.0.1.jar
+
+      - name: Deploy Java application on ECS instance
+        run: |
+          ssh admin@<114.55.4.19> 'sudo systemctl stop orion-admin-0.0.1.service'
+          ssh admin@<114.55.4.19> 'sudo mv /home/admin/orion-admin-0.0.1.jar /opt/orion-admin/orion-admin-0.0.1.jar'
+          ssh admin@<114.55.4.19> 'sudo systemctl start orion-admin-0.0.1.service'
