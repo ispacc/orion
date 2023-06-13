@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import java.util.Objects;
 
 /**
+ * todo 后续整合redis、以允许多jar同时启动
+ *
  * @author Wang Chao
  * @version V1.0
  * @date 2023-06-12 12:39
