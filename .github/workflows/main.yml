@@ -22,12 +22,12 @@ jobs:
       - name: Build and package Java application
         run: mvn clean package
 
-      - name: Set up Alibaba Cloud CLI
-        uses: aikin-vip/setup-aliyun-cli@v2.0.0
-        with:
-          access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-          access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
-          region: 'cn-hangzhou'
+      #      - name: Set up Alibaba Cloud CLI
+      #        uses: aikin-vip/setup-aliyun-cli@v2.0.0
+      #        with:
+      #          access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+      #          access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+      #          region: 'cn-hangzhou'
 
       #      - name: Connect to ECS instance
       #        run: aliyun ecs Connect --instance-name i-bp150eywwgmb4t05ji2l
