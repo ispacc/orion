@@ -39,6 +39,4 @@ jobs:
 
       - name: Deploy Java application on ECS instance
         run: |
-          #                              systemctl stop orion-admin-0.0.1.service'
-               mv ./target/orion-admin-0.0.1.jar /opt/orion-admin/orion-admin-0.0.1.jar'
-#          systemctl start orion-admin-0.0.1.service'
+          mv ./target/orion-admin-0.0.1.jar /opt/orion-admin/orion-admin-0.0.1.jar'
