@@ -39,4 +39,4 @@ jobs:
 
       - name: Deploy Java application on ECS instance
         run: |
-          mv ./target/orion-admin-0.0.1.jar /opt/orion-admin/orion-admin-0.0.1.jar'
+          mv ./target/orion-admin-0.0.1.jar /opt/orion-admin/orion-admin-0.0.1.jar
