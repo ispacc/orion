@@ -1,18 +1,22 @@
 package io.ispacc.orion.admin.module.websocket.listener;
 
-import io.ispacc.orion.admin.module.websocket.model.ChatMessage;
+import io.ispacc.orion.admin.constant.RedisConstant;
+import io.ispacc.orion.admin.constant.WebSocketConstant;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.event.EventListener;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import java.util.Objects;
+import java.util.Map;
 
 /**
+ * websocket事件监听
+ *
  * @author Wang Chao
  * @version V1.0
  * @date 2023-06-12 12:41
@@ -22,25 +26,39 @@ import java.util.Objects;
 @Log4j2
 @AllArgsConstructor
 public class WebSocketEventListener {
-    private final SimpMessageSendingOperations messagingTemplate;
+    private final RedisTemplate<String, String> redisTemplate;
 
+    //监听连接成功事件 存储在线用户 todo 可记录日志
     @EventListener
-    public void handleWebSocketConnectListener(SessionConnectedEvent event){
-        log.info("Received a new web socket connection");
+    public void handleWebSocketConnectListener(SessionConnectedEvent event) {
+        MessageHeaders headers = event.getMessage().getHeaders();
+        String userId = getUserIdConn(headers);
+        if (userId == null) return;
+        redisTemplate.opsForSet().add(RedisConstant.websocket_online_users, userId);
     }
 
+    //监听连接断开事件 删除在线用户
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
-        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
+        MessageHeaders headers = event.getMessage().getHeaders();
+        String userId = getUserIdDisConn(headers);
+        if (userId == null) return;
+        redisTemplate.opsForSet().remove(RedisConstant.websocket_online_users, userId);
+        //todo 循环发送事件,退出群组,告诉好友,俺不在线
+    }
 
-        String username = (String) Objects.requireNonNull(headerAccessor.getSessionAttributes()).get("username");
-        if(username != null) {
-            log.info("User Disconnected : " + username);
+    private String getUserIdConn(MessageHeaders headers) {
+        GenericMessage<?> simpConnectMessage = headers.get("simpConnectMessage", GenericMessage.class);
+        if (simpConnectMessage == null) return null;
+        MessageHeaders messageHeaders = simpConnectMessage.getHeaders();
+        Map<?, ?> map = messageHeaders.get("simpSessionAttributes", Map.class);
+        if (map == null) return null;
+        return (String) map.get(WebSocketConstant.websocket_connect_user);
+    }
 
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.setType(ChatMessage.MessageType.LEAVE);
-            chatMessage.setSender(username);
-            messagingTemplate.convertAndSend("/topic/public", chatMessage);
-        }
+    private String getUserIdDisConn(MessageHeaders headers) {
+        Map<?, ?> map = headers.get("simpSessionAttributes", Map.class);
+        if (map == null) return null;
+        return (String) map.get(WebSocketConstant.websocket_connect_user);
     }
 }

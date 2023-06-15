@@ -1,9 +1,12 @@
 package io.ispacc.orion.admin.intecepter;
 
+import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.utils.LoginUserRequestHolder;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
@@ -14,15 +17,21 @@ import org.springframework.web.servlet.HandlerInterceptor;
  * @version V1.0
  * @date 2023-06-13 11:23
  */
+
+@AllArgsConstructor
+@Component
 @Order(9)
 public class LoginUserInterceptor implements HandlerInterceptor {
+
+    private final UserDao userDao;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //todo 1获取token
 
         //todo 2根据token获取当前用户信息
 
-        LoginUserRequestHolder.set(null);
+        LoginUserRequestHolder.set(userDao.getById(1667116738221449218L));
         return true;
     }
 

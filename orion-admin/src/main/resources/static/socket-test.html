@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Chat</title>
+    <style>
+        /* CSS样式 */
+        .chat-container {
+            display: flex;
+        }
+
+        .room-list {
+            width: 200px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .message-list {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .input-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <ul class="room-list" id="roomList">
+        <!-- 群组列表项将动态添加到这里 -->
+    </ul>
+    <div class="message-list" id="messageList">
+        <!-- 聊天记录将动态添加到这里 -->
+    </div>
+</div>
+<div class="input-container">
+    <input type="text" id="messageInput" placeholder="输入消息">
+    <button id="sendMessageBtn">发送</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.0/dist/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+<script>
+    var stompClient = null;
+
+    function connect() {
+        var socket = new SockJS('http://localhost:8080/orion'); // WebSocket连接地址
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            var userId = getUserId(); // 获取当前用户的ID
+            getJoinedRooms(userId); // 获取用户加入的群组信息
+        }, {withCredentials: true});
+    }
+
+    function getJoinedRooms(userId) {
+        // 使用AJAX请求获取用户加入的群组信息
+        $.get('http://localhost:8080/chat/user/room', function (rooms) {
+            subscribeToUser();
+            rooms.data.forEach(function (room) {
+                subscribeToRoom(room.id);
+                addRoomToUI(room);
+            });
+        });
+    }
+
+    function subscribeToRoom(roomId) {
+        stompClient.subscribe('/topic/roomDestination/' + roomId, function (response) {
+            var message = JSON.parse(response.body);
+            console.log('收到room消息: ' + message);
+            showMessage(message);
+        });
+    }
+
+    function subscribeToUser() {
+        stompClient.subscribe('/user/queue/userDestination', function (response) {
+            var message = JSON.parse(response.body);
+            console.log('收到user消息: ' + message.msg);
+            showMessage(message);
+        });
+    }
+
+    function addRoomToUI(room) {
+        // 将群组信息添加到界面上的群组列表中
+        var $roomItem = $('<li>').text(room.name).attr('data-room-id', room.id);
+        $roomItem.click(function () {
+            var roomId = $(this).attr('data-room-id');
+            setCurrentRoom(roomId);
+        });
+        $('#roomList').append($roomItem);
+    }
+
+    function setCurrentRoom(roomId) {
+        // 设置当前选中的群组，展示对应的聊天记录等
+        // ...
+    }
+
+    function sendMessage(roomId, content) {
+        var message = {
+            roomId: roomId,
+            content: content
+        };
+        //stompClient.send('/app/message', {}, JSON.stringify(message));
+        $.get('http://localhost:8080/chat/xxxx', function (msg) {
+        });
+    }
+
+    function showMessage(message) {
+        // 展示消息到界面上
+        // ...
+    }
+
+    function getUserId() {
+        // 获取当前用户的ID
+        // ...
+        return '1667116738221449218';
+    }
+
+    function getCurrentRoomId() {
+        return 1;
+    }
+
+    // 在登录后调用connect()函数建立WebSocket连接
+    $(document).ready(function () {
+        $('#sendMessageBtn').click(function () {
+            var roomId = getCurrentRoomId(); // 获取当前选中的群组ID
+            var content = $('#messageInput').val();
+            sendMessage(roomId, content);
+            $('#messageInput').val(''); // 清空消息输入框
+        });
+    });
+
+    connect();
+</script>
+
+</body>
+</html>

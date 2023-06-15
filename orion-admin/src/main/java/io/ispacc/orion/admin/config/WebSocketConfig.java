@@ -1,5 +1,9 @@
 package io.ispacc.orion.admin.config;
 
+import io.ispacc.orion.admin.constant.WebSocketConstant;
+import io.ispacc.orion.admin.intecepter.LoginHandshakeInterceptor;
+import io.ispacc.orion.admin.intecepter.PrincipalHandshakeHandler;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -11,9 +15,13 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
  * @version V1.0
  * @date 2023-06-12 11:04
  */
+@AllArgsConstructor
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    private final LoginHandshakeInterceptor loginHandshakeInterceptor;
+    private final PrincipalHandshakeHandler principalHandshakeHandler;
 
     /**
      * 注册了一个名为/orion的WebSocket端点
@@ -24,7 +32,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/orion").withSockJS();
+        registry.addEndpoint("/orion")
+                .addInterceptors(loginHandshakeInterceptor) //拦截器 权限校验
+                .setHandshakeHandler(principalHandshakeHandler)//握手处理器 加入了身份信息 用于一对一聊天使用
+                .setAllowedOriginPatterns("*")
+                .withSockJS();
     }
 
 
@@ -32,8 +44,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         //监听客户端消息
-        registry.setApplicationDestinationPrefixes("/app");
+        registry.setApplicationDestinationPrefixes("/" + WebSocketConstant.app_destination_prefix);
         //监听服务的消息
-        registry.enableSimpleBroker("/topic", "queue");
+        registry.enableSimpleBroker("/" + WebSocketConstant.room_destination_prefix, "/" + WebSocketConstant.user_destination_prefix);
+        //设置客户端接收点对点消息地址的前缀
+        registry.setUserDestinationPrefix("/" + WebSocketConstant.user_prefix);
     }
 }

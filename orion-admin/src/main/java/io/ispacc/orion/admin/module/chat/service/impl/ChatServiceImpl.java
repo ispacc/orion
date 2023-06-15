@@ -10,6 +10,7 @@ import io.ispacc.orion.admin.module.chat.entity.Room;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
 import io.ispacc.orion.admin.module.chat.service.adapter.RoomAdapter;
 import io.ispacc.orion.admin.module.chat.service.adapter.UserAdapter;
+import io.ispacc.orion.admin.module.websocket.service.WebSocketService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -34,6 +35,7 @@ public class ChatServiceImpl implements ChatService {
     private final RoomDao roomDao;
     private final UserDao userDao;
     private final RedisTemplate<String, String> redisTemplate;
+    private final WebSocketService webSocketService;
 
     @Override
     public List<RoomResp> getRoomsByUserId(Long userId) {
@@ -44,7 +46,8 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public List<UserResp> getUsersByRoomId(Long roomId) {
         List<User> userEntityList = userDao.getByRoomId(roomId);
-        Set<Long> onlineUserIds = userEntityList.stream().map(User::getUserId).collect(Collectors.toSet());
+        Set<Long> userIds = userEntityList.stream().map(User::getUserId).collect(Collectors.toSet());
+        Set<Long> onlineUserIds = getUsersInOnline(userIds);
         return UserAdapter.buildResp(userEntityList, onlineUserIds);
     }
 
