@@ -29,7 +29,7 @@ public class AdminServiceImpl implements AdminService {
         user.setStatus(1);
         //  查询是否有相同用户名的用户
         List<User> list = userMapper.selectList(new LambdaQueryWrapper<User>().eq(User::getUsername, user.getUsername()));
-        if (list.size() > 0) {
+        if (!list.isEmpty()) {
             return null;
         }
         //TODO 将密码进行加密操作

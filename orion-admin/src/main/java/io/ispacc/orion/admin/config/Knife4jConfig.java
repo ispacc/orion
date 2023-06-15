@@ -5,7 +5,7 @@ import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 
-import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
@@ -13,12 +13,12 @@ import java.net.UnknownHostException;
  **/
 @Configuration
 @Slf4j
-public class knife4jConfig implements ApplicationListener<WebServerInitializedEvent> {
+public class Knife4jConfig implements ApplicationListener<WebServerInitializedEvent> {
     @Override
     public void onApplicationEvent(WebServerInitializedEvent event) {
         try {
             // 获取IP
-            String hostAddress = Inet4Address.getLocalHost().getHostAddress();
+            String hostAddress = InetAddress.getLocalHost().getHostAddress();
             // 获取端口号
             int port = event.getWebServer().getPort();
             // 获取应用名
