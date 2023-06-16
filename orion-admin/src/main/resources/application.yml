@@ -47,12 +47,3 @@ mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
   # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
   type-aliases-package: io.ispacc.orion.admin
-  configuration:
-    # 控制台sql打印
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-# 日志配置
-logging:
-  level:
-    io.ispacc.orion.admin.service.impl: debug
-    org.springframework: warn
