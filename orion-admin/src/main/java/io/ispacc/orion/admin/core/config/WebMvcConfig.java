@@ -1,6 +1,6 @@
-package io.ispacc.orion.admin.config;
+package io.ispacc.orion.admin.core.config;
 
-import io.ispacc.orion.admin.intecepter.LoginUserInterceptor;
+import io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -22,7 +22,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //为所有请求设置用户信息线程变量
-        registry.addInterceptor(loginUserInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(loginUserInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/admin/register", "/admin/login", "favicon.ico", "/swagger-resources/**", "/webjars/**", "/v3/**", "/swagger-ui.html/**", "/doc.html")
+                .order(1);
     }
 
     //跨域

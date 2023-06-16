@@ -1,6 +1,7 @@
-package io.ispacc.orion.admin.utils;
+package io.ispacc.orion.admin.core.utils;
 
 import io.ispacc.orion.admin.module.admin.entity.User;
+import io.netty.util.concurrent.FastThreadLocal;
 
 /**
  * 每次请求,拦截器会根据用户的token,将用户信息存储至线程变量中,以便方法使用
@@ -10,18 +11,18 @@ import io.ispacc.orion.admin.module.admin.entity.User;
  * @version V1.0
  * @date 2023-06-13 11:12
  */
-public class LoginUserRequestHolder {
-    private static final ThreadLocal<User> threadLocal = new ThreadLocal<>();
+public class UserHolder {
+    private static final FastThreadLocal<User> threadLocal = new FastThreadLocal<>();
 
-    public static void set(User user) {
+    public static void setUser(User user) {
         threadLocal.set(user);
     }
 
-    public static User get() {
+    public static User getUser() {
         return threadLocal.get();
     }
 
-    public static void remove() {
+    public static void removeUser() {
         threadLocal.remove();
     }
 }

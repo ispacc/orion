@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.constant;
+package io.ispacc.orion.admin.core.constant;
 
 /**
  * redis的静态默认值

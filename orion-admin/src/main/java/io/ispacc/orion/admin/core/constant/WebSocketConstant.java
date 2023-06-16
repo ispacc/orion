@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.constant;
+package io.ispacc.orion.admin.core.constant;
 
 /**
  * websocket静态默认值

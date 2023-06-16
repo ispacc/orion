@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.common;
+package io.ispacc.orion.admin.core.common;
 
 /**
  * API返回码接口

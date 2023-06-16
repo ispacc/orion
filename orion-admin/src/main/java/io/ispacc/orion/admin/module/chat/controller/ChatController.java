@@ -1,10 +1,10 @@
 package io.ispacc.orion.admin.module.chat.controller;
 
-import io.ispacc.orion.admin.common.CommonResult;
+import io.ispacc.orion.admin.core.common.CommonResult;
+import io.ispacc.orion.admin.core.utils.UserHolder;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
-import io.ispacc.orion.admin.utils.LoginUserRequestHolder;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,7 +32,7 @@ public class ChatController {
      */
     @GetMapping("/user/room")
     public CommonResult<List<RoomResp>> getRoomByCurrentUserId() {
-        return CommonResult.success(chatService.getRoomsByUserId(LoginUserRequestHolder.get().getUserId()));
+        return CommonResult.success(chatService.getRoomsByUserId(UserHolder.getUser().getUserId()));
     }
 
     /**

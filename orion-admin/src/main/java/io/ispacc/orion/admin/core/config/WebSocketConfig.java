@@ -1,8 +1,8 @@
-package io.ispacc.orion.admin.config;
+package io.ispacc.orion.admin.core.config;
 
-import io.ispacc.orion.admin.constant.WebSocketConstant;
-import io.ispacc.orion.admin.intecepter.LoginHandshakeInterceptor;
-import io.ispacc.orion.admin.intecepter.PrincipalHandshakeHandler;
+import io.ispacc.orion.admin.core.constant.WebSocketConstant;
+import io.ispacc.orion.admin.core.interceptor.LoginHandshakeInterceptor;
+import io.ispacc.orion.admin.core.interceptor.PrincipalHandshakeHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

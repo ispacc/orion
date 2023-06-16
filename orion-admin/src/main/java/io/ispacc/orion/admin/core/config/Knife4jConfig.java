@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.config;
+package io.ispacc.orion.admin.core.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.context.WebServerInitializedEvent;

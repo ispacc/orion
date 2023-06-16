@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.config;
+package io.ispacc.orion.admin.core.config;
 
 
 import com.alibaba.fastjson2.JSONFactory;

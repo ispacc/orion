@@ -20,6 +20,7 @@
         <java.version>17</java.version>
         <snakeyaml.version>2.0</snakeyaml.version>
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <jjwt.version>0.11.5</jjwt.version>
         <mysql-connector-j.version>8.0.33</mysql-connector-j.version>
         <fastjson2.version>2.0.32</fastjson2.version>
         <knife4j.version>4.1.0</knife4j.version>
@@ -135,6 +136,26 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
             <version>${websocket.version}</version>
         </dependency>
+
+        <!-- JWT 相关 -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 
 </project>

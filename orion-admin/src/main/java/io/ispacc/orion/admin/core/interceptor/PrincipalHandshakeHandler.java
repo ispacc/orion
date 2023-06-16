@@ -1,6 +1,6 @@
-package io.ispacc.orion.admin.intecepter;
+package io.ispacc.orion.admin.core.interceptor;
 
-import io.ispacc.orion.admin.constant.WebSocketConstant;
+import io.ispacc.orion.admin.core.constant.WebSocketConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

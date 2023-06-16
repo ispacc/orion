@@ -1,6 +1,6 @@
 package io.ispacc.orion.admin.module.websocket.service.impl;
 
-import io.ispacc.orion.admin.constant.WebSocketConstant;
+import io.ispacc.orion.admin.core.constant.WebSocketConstant;
 import io.ispacc.orion.admin.module.websocket.service.WebSocketService;
 import lombok.AllArgsConstructor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;

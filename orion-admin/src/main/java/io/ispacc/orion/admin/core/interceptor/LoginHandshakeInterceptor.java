@@ -1,7 +1,9 @@
-package io.ispacc.orion.admin.intecepter;
+package io.ispacc.orion.admin.core.interceptor;
 
-import io.ispacc.orion.admin.constant.WebSocketConstant;
+import io.ispacc.orion.admin.core.constant.WebSocketConstant;
+import io.ispacc.orion.admin.core.utils.UserHolder;
 import io.ispacc.orion.admin.module.admin.dao.UserDao;
+import io.ispacc.orion.admin.module.admin.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServerHttpRequest;
@@ -29,7 +31,9 @@ public class LoginHandshakeInterceptor implements HandshakeInterceptor {
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
         //todo 对握手的请求进行权限校验，并保存请求用户信息
-        attributes.put(WebSocketConstant.websocket_connect_user, userDao.getById(1667116738221449218L).getUserId().toString());
+        // TODO 暂不修改
+        User user = UserHolder.getUser();
+        attributes.put(WebSocketConstant.websocket_connect_user, userDao.getById(user.getUserId()).getUserId().toString());
         return true;
     }
 

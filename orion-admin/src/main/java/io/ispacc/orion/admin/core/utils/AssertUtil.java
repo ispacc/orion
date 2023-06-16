@@ -1,8 +1,8 @@
-package io.ispacc.orion.admin.utils;
+package io.ispacc.orion.admin.core.utils;
 
 import cn.hutool.core.util.ObjectUtil;
-import io.ispacc.orion.admin.common.IErrorCode;
-import io.ispacc.orion.admin.common.OrionException;
+import io.ispacc.orion.admin.core.common.IErrorCode;
+import io.ispacc.orion.admin.core.common.OrionException;
 
 /**
  * 校验工具类

@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.common;
+package io.ispacc.orion.admin.core.common;
 
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;

@@ -1,7 +1,7 @@
 package io.ispacc.orion.admin.module.websocket.listener;
 
-import io.ispacc.orion.admin.constant.RedisConstant;
-import io.ispacc.orion.admin.constant.WebSocketConstant;
+import io.ispacc.orion.admin.core.constant.RedisConstant;
+import io.ispacc.orion.admin.core.constant.WebSocketConstant;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.event.EventListener;

@@ -1,4 +1,4 @@
-package io.ispacc.orion.admin.common;
+package io.ispacc.orion.admin.core.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

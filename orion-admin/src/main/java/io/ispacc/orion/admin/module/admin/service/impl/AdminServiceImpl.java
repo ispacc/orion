@@ -1,11 +1,12 @@
 package io.ispacc.orion.admin.module.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import io.ispacc.orion.admin.core.constant.SystemConfigConsts;
+import io.ispacc.orion.admin.core.utils.JwtUtils;
 import io.ispacc.orion.admin.module.admin.dto.UserParam;
 import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.admin.mapper.UserMapper;
 import io.ispacc.orion.admin.module.admin.service.AdminService;
-import io.ispacc.orion.admin.utils.JWTUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,11 @@ import java.util.List;
 public class AdminServiceImpl implements AdminService {
 
     private final UserMapper userMapper;
+    private final JwtUtils jwtUtils;
 
-    public AdminServiceImpl(UserMapper userMapper) {
+    public AdminServiceImpl(UserMapper userMapper, JwtUtils jwtUtils) {
         this.userMapper = userMapper;
+        this.jwtUtils = jwtUtils;
     }
 
     @Override
@@ -47,7 +50,7 @@ public class AdminServiceImpl implements AdminService {
         if (user == null) {
             return null;
         }
-        token = JWTUtils.createToken(user);
+        token = jwtUtils.generateToken(user.getUserId(), SystemConfigConsts.ORION_USER_KEY);
         return token;
     }
 

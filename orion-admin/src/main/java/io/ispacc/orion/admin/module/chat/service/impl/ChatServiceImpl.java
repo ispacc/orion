@@ -1,6 +1,6 @@
 package io.ispacc.orion.admin.module.chat.service.impl;
 
-import io.ispacc.orion.admin.constant.RedisConstant;
+import io.ispacc.orion.admin.core.constant.RedisConstant;
 import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
