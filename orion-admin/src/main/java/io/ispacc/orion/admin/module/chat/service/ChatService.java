@@ -1,5 +1,6 @@
 package io.ispacc.orion.admin.module.chat.service;
 
+import io.ispacc.orion.admin.module.chat.controller.req.MessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 
@@ -21,4 +22,11 @@ public interface ChatService {
      * @return 用户信息
      */
     List<UserResp> getUsersByRoomId(Long roomId);
+
+    /**
+     * 给群组发送消息
+     *
+     * @param messageReq 消息信息
+     */
+    void sendMsgToRoomId(MessageReq messageReq, Long sendUserId);
 }
