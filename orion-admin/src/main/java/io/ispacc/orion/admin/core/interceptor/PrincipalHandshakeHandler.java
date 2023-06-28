@@ -24,11 +24,12 @@ public class PrincipalHandshakeHandler extends DefaultHandshakeHandler {
     @Override
     protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
         //根据token为连接请求设置用户信息
-
         String userId = (String) attributes.get(WebSocketConstant.websocket_connect_user);
         if (userId == null) return null;
         return new WebSocketPrincipal(userId);
     }
+
+
 }
 
 @AllArgsConstructor

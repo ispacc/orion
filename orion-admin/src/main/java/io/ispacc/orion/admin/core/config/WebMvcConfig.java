@@ -3,6 +3,7 @@ package io.ispacc.orion.admin.core.config;
 import io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @version V1.0
  * @date 2023-06-14 09:07
  */
+@EnableAsync
 @Configuration
 @AllArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {

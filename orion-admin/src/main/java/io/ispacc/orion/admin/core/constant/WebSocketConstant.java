@@ -27,4 +27,8 @@ public class WebSocketConstant {
 
     //连接时身份信息标识
     public static final String websocket_connect_user = "websocketConnectUser";
+
+    public static final String user_channel = "/" + user_destination_prefix + "/" + user_destination;
+
+    public static final String room_channel_prefix = "/" + room_destination_prefix + "/" + room_destination + "/";
 }

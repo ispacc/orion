@@ -19,9 +19,10 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
-
     private final LoginHandshakeInterceptor loginHandshakeInterceptor;
     private final PrincipalHandshakeHandler principalHandshakeHandler;
+    //ChannelInterceptor ImmutableMessageChannelInterceptor
+    //WebSocketHandler
 
     /**
      * 注册了一个名为/orion的WebSocket端点
@@ -36,7 +37,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .addInterceptors(loginHandshakeInterceptor) //拦截器 权限校验
                 .setHandshakeHandler(principalHandshakeHandler)//握手处理器 加入了身份信息 用于一对一聊天使用
                 .setAllowedOriginPatterns("*")
-                .withSockJS();
+                .withSockJS()
+        ;
     }
 
 

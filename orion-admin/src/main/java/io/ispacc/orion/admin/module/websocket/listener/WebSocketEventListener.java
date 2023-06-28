@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
@@ -33,6 +34,7 @@ public class WebSocketEventListener {
     public void handleWebSocketConnectListener(SessionConnectedEvent event) {
         MessageHeaders headers = event.getMessage().getHeaders();
         String userId = getUserIdConn(headers);
+        String sessionId = getSessionId(headers);
         if (userId == null) return;
         redisTemplate.opsForSet().add(RedisConstant.websocket_online_users, userId);
     }
@@ -42,23 +44,28 @@ public class WebSocketEventListener {
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         MessageHeaders headers = event.getMessage().getHeaders();
         String userId = getUserIdDisConn(headers);
+        String sessionId = getSessionId(headers);
         if (userId == null) return;
         redisTemplate.opsForSet().remove(RedisConstant.websocket_online_users, userId);
         //todo 循环发送事件,退出群组,告诉好友,俺不在线
     }
 
     private String getUserIdConn(MessageHeaders headers) {
-        GenericMessage<?> simpConnectMessage = headers.get("simpConnectMessage", GenericMessage.class);
+        GenericMessage<?> simpConnectMessage = headers.get(SimpMessageHeaderAccessor.CONNECT_MESSAGE_HEADER, GenericMessage.class);
         if (simpConnectMessage == null) return null;
         MessageHeaders messageHeaders = simpConnectMessage.getHeaders();
-        Map<?, ?> map = messageHeaders.get("simpSessionAttributes", Map.class);
+        Map<?, ?> map = messageHeaders.get(SimpMessageHeaderAccessor.SESSION_ATTRIBUTES, Map.class);
         if (map == null) return null;
         return (String) map.get(WebSocketConstant.websocket_connect_user);
     }
 
     private String getUserIdDisConn(MessageHeaders headers) {
-        Map<?, ?> map = headers.get("simpSessionAttributes", Map.class);
+        Map<?, ?> map = headers.get(SimpMessageHeaderAccessor.SESSION_ATTRIBUTES, Map.class);
         if (map == null) return null;
         return (String) map.get(WebSocketConstant.websocket_connect_user);
+    }
+
+    private String getSessionId(MessageHeaders headers) {
+        return headers.get(SimpMessageHeaderAccessor.SESSION_ID_HEADER, String.class);
     }
 }

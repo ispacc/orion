@@ -34,4 +34,17 @@ CREATE TABLE t_user_room
     FOREIGN KEY (user_id) REFERENCES t_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (room_id) REFERENCES t_room (id) ON DELETE CASCADE ON UPDATE CASCADE,
     time_create datetime default CURRENT_TIMESTAMP comment '创建时间'
-) comment '用户、群聊的关联群';
+) comment '用户、群聊的关联表';
+
+CREATE TABLE t_message
+(
+    id           bigint PRIMARY KEY AUTO_INCREMENT comment 'id',
+    room_id      bigint comment '群聊id',
+    user_id      bigint comment '用户id',
+    content      varchar(1024) comment '消息内容',
+    reply_msg_id bigint comment '回复的消息id',
+    status       int      default 0 comment '消息状态 0正常 1删除',
+    time_create  datetime default CURRENT_TIMESTAMP comment '创建时间',
+    FOREIGN KEY (user_id) REFERENCES t_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (room_id) REFERENCES t_room (id) ON DELETE CASCADE ON UPDATE CASCADE
+) comment '群聊消息表';

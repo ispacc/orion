@@ -24,4 +24,8 @@ public class RoomDao extends ServiceImpl<RoomMapper, Room> {
     public List<Room> getByUserId(Long userId) {
         return roomMapper.getRoomsByUserId(userId);
     }
+
+    public Room getRoomByIdExistsUserId(Long id, Long userId) {
+        return roomMapper.getRoomByIdExistsUserId(id, userId);
+    }
 }

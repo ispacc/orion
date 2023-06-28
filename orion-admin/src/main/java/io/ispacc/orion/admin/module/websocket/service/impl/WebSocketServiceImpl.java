@@ -3,22 +3,31 @@ package io.ispacc.orion.admin.module.websocket.service.impl;
 import io.ispacc.orion.admin.core.constant.WebSocketConstant;
 import io.ispacc.orion.admin.module.websocket.service.WebSocketService;
 import lombok.AllArgsConstructor;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Service
 public class WebSocketServiceImpl implements WebSocketService {
 
-    private final SimpMessageSendingOperations sendingOperations;
+    private final SimpMessagingTemplate simpMessagingTemplate;
 
     @Override
     public <T> void sendToUser(Long userId, T msg) {
-        sendingOperations.convertAndSendToUser(userId.toString(), "/" + WebSocketConstant.user_destination_prefix + "/" + WebSocketConstant.user_destination, msg);
+        simpMessagingTemplate.convertAndSendToUser(userId.toString(), WebSocketConstant.user_channel, msg);
+    }
+
+    @Override
+    public <T> void sendToUsers(List<Long> userIds, T msg) {
+        for (Long userId : userIds) {
+            sendToUser(userId, msg);
+        }
     }
 
     @Override
     public <T> void sendToRoom(Long roomId, T msg) {
-        sendingOperations.convertAndSend("/" + WebSocketConstant.room_destination_prefix + "/" + WebSocketConstant.room_destination + "/" + roomId.toString(), msg);
+        simpMessagingTemplate.convertAndSend(WebSocketConstant.room_channel_prefix + roomId.toString(), msg);
     }
 }
