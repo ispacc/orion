@@ -15,19 +15,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class AdminController {
 
+    private final AdminService adminService;
     @Value("${orion.jwt.tokenHead}")
     private String tokenHead;
-
-    private final AdminService adminService;
 
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public CommonResult<User> register(@Validated @RequestBody UserParam userParam) {
         User user = adminService.register(userParam);
         if (user == null) {
@@ -37,7 +36,7 @@ public class AdminController {
     }
 
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public CommonResult login(@Validated @RequestBody UserParam userParam) {
         String token = adminService.login(userParam.getUsername(), userParam.getPassword());
         if (token == null) {

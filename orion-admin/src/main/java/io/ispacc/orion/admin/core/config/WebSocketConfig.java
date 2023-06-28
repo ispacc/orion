@@ -25,7 +25,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     //WebSocketHandler
 
     /**
-     * 注册了一个名为/orion的WebSocket端点
+     * 注册了一个名为/websocket的WebSocket端点
      * 并使用withSockJS()方法启用SockJS支持。
      * 这意味着客户端可以通过WebSocket协议与/orion端点进行通信，
      * 但如果客户端浏览器不支持WebSocket或无法直接连接到WebSocket端点，
@@ -33,12 +33,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/orion")
+        registry.addEndpoint("/websocket")
                 .addInterceptors(loginHandshakeInterceptor) //拦截器 权限校验
-                .setHandshakeHandler(principalHandshakeHandler)//握手处理器 加入了身份信息 用于一对一聊天使用
-                .setAllowedOriginPatterns("*")
-                .withSockJS()
-        ;
+//                .setHandshakeHandler(principalHandshakeHandler)//握手处理器 加入了身份信息 用于一对一聊天使用
+                .setAllowedOriginPatterns("*");
     }
 
 

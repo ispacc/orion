@@ -8,10 +8,14 @@ import io.ispacc.orion.admin.module.admin.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
+
+import java.util.Optional;
 
 /**
  * 拦截所有请求,并设置当前用户至线程变量,如果无则为null
@@ -25,14 +29,21 @@ import org.springframework.web.servlet.HandlerInterceptor;
 @RequiredArgsConstructor
 @Component
 @Order(9)
+@Slf4j
 public class LoginUserInterceptor implements HandlerInterceptor {
 
     private final UserDao userDao;
     private final JwtUtils jwtUtils;
 
+    @Value("${orion.jwt.tokenHead}")
+    private String tokenHead;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getHeader(SystemConfigConsts.HTTP_AUTH_HEADER_NAME);
+        String token = Optional.ofNullable(request.getHeader(SystemConfigConsts.HTTP_AUTH_HEADER_NAME))
+                .filter(h -> h.startsWith(tokenHead))
+                .map(h -> h.substring(tokenHead.length()))
+                .orElse(null);
 
         if (StringUtils.hasText(token)) {
             Long userId = jwtUtils.parseToken(token, SystemConfigConsts.ORION_USER_KEY);
