@@ -23,7 +23,7 @@ public class RedisConfig {
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
                 // 默认缓存时间
-                .entryTtl(Duration.ofSeconds(600))
+                .entryTtl(Duration.ofMinutes(5))
                 // 设置key的序列化方式
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(stringRedisSerializer))
                 // 设置value的序列化方式

@@ -5,29 +5,26 @@ package io.ispacc.orion.admin.core.constant;
  */
 public class SystemConfigConsts {
 
-    private SystemConfigConsts() {
-        throw new IllegalStateException(CONST_INSTANCE_EXCEPTION_MSG);
-    }
-
     /**
      * Http 请求认证 Header
      */
     public static final String HTTP_AUTH_HEADER_NAME = "Authorization";
-
     /**
-     * 用户登录标识
+     * 管理员登录标识
      */
     public static final String ORION_ADMIN_KEY = "Admin";
-
     /**
      * 用户登录标识
      */
     public static final String ORION_USER_KEY = "User";
-
-
     /**
      * 常量类实例化异常信息
      */
     public static final String CONST_INSTANCE_EXCEPTION_MSG = "Constant class";
+
+
+    private SystemConfigConsts() {
+        throw new IllegalStateException(CONST_INSTANCE_EXCEPTION_MSG);
+    }
 
 }
