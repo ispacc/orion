@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("t_user")
+@TableName("ums_user")
 public class User extends Model<User> {
     //用户ID
     @TableId
@@ -38,9 +38,9 @@ public class User extends Model<User> {
     //用户昵称
     private String nickname;
     //创建时间
-    private LocalDateTime timeCreate;
+    private LocalDateTime createTime;
     //更新时间
-    private LocalDateTime timeUpdate;
+    private LocalDateTime updateTime;
     //备注
     private String remark;
 

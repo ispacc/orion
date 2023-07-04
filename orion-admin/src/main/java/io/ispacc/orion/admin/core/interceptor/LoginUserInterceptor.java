@@ -1,7 +1,6 @@
 package io.ispacc.orion.admin.core.interceptor;
 
-import io.ispacc.orion.admin.core.constant.SystemConfigConsts;
-import io.ispacc.orion.admin.core.utils.JwtUtils;
+import cn.dev33.satoken.stp.StpUtil;
 import io.ispacc.orion.admin.core.utils.UserHolder;
 import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.module.admin.entity.User;
@@ -9,13 +8,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import java.util.Optional;
 
 /**
  * 拦截所有请求,并设置当前用户至线程变量,如果无则为null
@@ -30,24 +28,23 @@ import java.util.Optional;
 @Component
 @Order(9)
 @Slf4j
+@SuppressWarnings("NullableProblems")
 public class LoginUserInterceptor implements HandlerInterceptor {
 
     private final UserDao userDao;
-    private final JwtUtils jwtUtils;
 
-    @Value("${orion.jwt.tokenHead}")
-    private String tokenHead;
+    @Value("${sa-token.token-name}")
+    private String tokenHeader;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = Optional.ofNullable(request.getHeader(SystemConfigConsts.HTTP_AUTH_HEADER_NAME))
-                .filter(h -> h.startsWith(tokenHead))
-                .map(h -> h.substring(tokenHead.length()))
-                .orElse(null);
+        String token = request.getHeader(tokenHeader);
 
-        if (StringUtils.hasText(token)) {
-            Long userId = jwtUtils.parseToken(token, SystemConfigConsts.ORION_USER_KEY);
-            if (userId != null) {
+
+        if (StringUtils.isNotBlank(token)) {
+            Object loginIdByToken = StpUtil.getLoginIdByToken(token);
+            if (loginIdByToken != null) {
+                Long userId = NumberUtils.toLong(loginIdByToken.toString(), -1);
                 User user = userDao.getById(userId);
                 if (user != null) {
                     UserHolder.setUser(user);
@@ -64,4 +61,5 @@ public class LoginUserInterceptor implements HandlerInterceptor {
         UserHolder.removeUser();
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
+
 }

@@ -1,12 +1,13 @@
 package io.ispacc.orion.admin.module.admin.service.impl;
 
+import cn.dev33.satoken.stp.SaTokenInfo;
+import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import io.ispacc.orion.admin.core.constant.SystemConfigConsts;
-import io.ispacc.orion.admin.core.utils.JwtUtils;
 import io.ispacc.orion.admin.module.admin.dto.UserParam;
 import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.admin.mapper.UserMapper;
 import io.ispacc.orion.admin.module.admin.service.AdminService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -14,16 +15,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class AdminServiceImpl implements AdminService {
 
     private final UserMapper userMapper;
-    private final JwtUtils jwtUtils;
-
-    public AdminServiceImpl(UserMapper userMapper, JwtUtils jwtUtils) {
-        this.userMapper = userMapper;
-        this.jwtUtils = jwtUtils;
-    }
 
     @Override
     public User register(UserParam userParam) {
@@ -43,15 +39,15 @@ public class AdminServiceImpl implements AdminService {
 
 
     @Override
-    public String login(String username, String password) {
+    public SaTokenInfo login(String username, String password) {
         String token = null;
 //        密码需要客户端加密后传递
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, username).eq(User::getPassword, password));
         if (user == null) {
             return null;
         }
-        token = jwtUtils.generateToken(user.getUserId(), SystemConfigConsts.ORION_USER_KEY);
-        return token;
+        StpUtil.login(user.getUserId());
+        return StpUtil.getTokenInfo();
     }
 
 

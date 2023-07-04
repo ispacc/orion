@@ -1,7 +1,7 @@
 package io.ispacc.orion.admin.module.admin.dto;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 
@@ -10,12 +10,12 @@ import lombok.Data;
  */
 @Data
 public class UserParam {
-    @NotEmpty
+    @NotBlank(message = "请输入用户名")
     private String username;
-    @NotEmpty
+    @NotBlank(message = "请输入密码")
     private String password;
     private String icon;
-    @Email
+    @Email(message = "邮箱格式不正确")
     private String email;
     private String nickName;
     private String remark;
