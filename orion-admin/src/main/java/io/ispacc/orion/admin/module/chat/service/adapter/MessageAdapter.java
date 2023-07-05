@@ -2,6 +2,7 @@ package io.ispacc.orion.admin.module.chat.service.adapter;
 
 import cn.hutool.core.bean.BeanUtil;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
+import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.entity.Message;
 
 /**
@@ -12,6 +13,13 @@ import io.ispacc.orion.admin.module.chat.entity.Message;
 public class MessageAdapter {
 
     public static Message buildEntity(RoomMessageReq messageReq, Long userId) {
+        Message message = new Message();
+        BeanUtil.copyProperties(messageReq, message);
+        message.setUserId(userId);
+        return message;
+    }
+
+    public static Message buildEntity(UserMessageReq messageReq, Long userId) {
         Message message = new Message();
         BeanUtil.copyProperties(messageReq, message);
         message.setUserId(userId);

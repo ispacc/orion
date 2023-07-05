@@ -3,15 +3,18 @@ package io.ispacc.orion.admin.module.chat.service.impl;
 import io.ispacc.orion.admin.core.constant.RedisConstant;
 import io.ispacc.orion.admin.core.utils.AssertUtil;
 import io.ispacc.orion.admin.module.admin.dao.UserDao;
+import io.ispacc.orion.admin.module.admin.dao.UserFriendDao;
 import io.ispacc.orion.admin.module.admin.entity.User;
+import io.ispacc.orion.admin.module.chat.controller.req.MessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
+import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 import io.ispacc.orion.admin.module.chat.dao.MessageDao;
 import io.ispacc.orion.admin.module.chat.dao.RoomDao;
 import io.ispacc.orion.admin.module.chat.entity.Message;
 import io.ispacc.orion.admin.module.chat.entity.Room;
-import io.ispacc.orion.admin.module.chat.event.MessageSendEvent;
+import io.ispacc.orion.admin.module.chat.event.RoomMessageSendEvent;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
 import io.ispacc.orion.admin.module.chat.service.adapter.MessageAdapter;
 import io.ispacc.orion.admin.module.chat.service.adapter.RoomAdapter;
@@ -40,6 +43,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class ChatServiceImpl implements ChatService {
+    private final UserFriendDao userFriendDao;
     private final RoomDao roomDao;
     private final UserDao userDao;
     private final MessageDao messageDao;
@@ -66,7 +70,14 @@ public class ChatServiceImpl implements ChatService {
         checkMsg(messageReq, sendUserId);
         Message message = MessageAdapter.buildEntity(messageReq, sendUserId);
         messageDao.save(message);
-        applicationEventPublisher.publishEvent(new MessageSendEvent(this, message.getId()));
+        applicationEventPublisher.publishEvent(new RoomMessageSendEvent(this, message.getId()));
+        return message.getId();
+    }
+
+    @Override
+    public Long sendMsgToUserId(UserMessageReq messageReq, Long sendUserId) {
+        checkMsg(messageReq, sendUserId);
+        Message message = MessageAdapter.buildEntity(messageReq, sendUserId);
         return message.getId();
     }
 
@@ -81,13 +92,26 @@ public class ChatServiceImpl implements ChatService {
      * @param messageReq 消息内容
      */
     private void checkMsg(RoomMessageReq messageReq, Long sendUserId) {
-        AssertUtil.isNotEmpty(messageReq.getContent(), "消息不能为空");
-        AssertUtil.isTrue(messageReq.getContent().length() < 500, "消息过长,熊宇航要打人了,兄die");
+        baseCheckMsg(messageReq, sendUserId);
         Room room = roomDao.getRoomByIdExistsUserId(messageReq.getRoomId(), sendUserId);
         AssertUtil.isTrue(room != null, "发送的聊天室不存在,不要试探我了哥");
         if (Objects.nonNull(messageReq.getReplyMsgId())) {
             AssertUtil.isTrue(messageDao.getByIdExistsRoomId(messageReq.getReplyMsgId(), messageReq.getRoomId()) != null, "回复的消息不存在");
         }
+    }
+
+    private void checkMsg(UserMessageReq messageReq, Long sendUserId) {
+        baseCheckMsg(messageReq, sendUserId);
+        AssertUtil.isTrue(userFriendDao.countByUserIdAndUserFriendId(sendUserId, messageReq.getFriendUserId()) > 0, "当前用户不是你的好友");
+        if (Objects.nonNull(messageReq.getReplyMsgId())) {
+            AssertUtil.isTrue(messageDao.getByIdExistsRoomId(messageReq.getReplyMsgId(), null) != null, "回复的消息不存在");
+        }
+    }
+
+    private void baseCheckMsg(MessageReq messageReq, Long sendUserId) {
+        AssertUtil.isNotEmpty(messageReq.getContent(), "消息不能为空");
+        AssertUtil.isTrue(messageReq.getContent().length() < 500, "消息过长,熊宇航要打人了,兄die");
+
     }
 
     //todo 后续根据熊宇航的redis module编写情况 可迁移至redis模块

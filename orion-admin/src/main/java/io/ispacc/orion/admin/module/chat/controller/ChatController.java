@@ -3,6 +3,7 @@ package io.ispacc.orion.admin.module.chat.controller;
 import io.ispacc.orion.admin.core.common.CommonResult;
 import io.ispacc.orion.admin.core.utils.UserHolder;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
+import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
@@ -52,7 +53,8 @@ public class ChatController {
     }
 
     @PostMapping("/msg/user")
-    public CommonResult<?> send() {
-        return null;
+    public CommonResult<?> send(@Valid UserMessageReq message) {
+        Long msgId = chatService.sendMsgToUserId(message, UserHolder.getUser().getUserId());
+        return CommonResult.success("msgId", msgId);
     }
 }

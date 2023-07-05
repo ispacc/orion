@@ -1,21 +1,25 @@
 package io.ispacc.orion.admin.module.chat.controller.req;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @author Wang Chao
  * @version V1.0
- * @date 2023-07-05 16:17
+ * @date 2023-07-05 20:26
  */
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserMessageReq extends MessageReq {
-    @NotNull
-    private Long friendUserId;
+@Data
+public class MessageReq implements Serializable {
+    @NotEmpty
+    private String content;
+
+    private Long replyMsgId;
 }
