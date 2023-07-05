@@ -22,7 +22,7 @@ spring:
     password: Goodwell99
 
 sa-token:
-  token-name: token
+  token-name: orion-token
   token-prefix: Bearer
   timeout: 3600
   active-timeout: 7200

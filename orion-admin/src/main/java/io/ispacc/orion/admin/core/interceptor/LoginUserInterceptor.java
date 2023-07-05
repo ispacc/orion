@@ -8,9 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -33,24 +30,13 @@ public class LoginUserInterceptor implements HandlerInterceptor {
 
     private final UserDao userDao;
 
-    @Value("${sa-token.token-name}")
-    private String tokenHeader;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getHeader(tokenHeader);
-
-
-        if (StringUtils.isNotBlank(token)) {
-            Object loginIdByToken = StpUtil.getLoginIdByToken(token);
-            if (loginIdByToken != null) {
-                Long userId = NumberUtils.toLong(loginIdByToken.toString(), -1);
-                User user = userDao.getById(userId);
-                if (user != null) {
-                    UserHolder.setUser(user);
-                    return true;
-                }
-            }
+        Long userId = StpUtil.getLoginIdAsLong();
+        User user = userDao.getById(userId);
+        if (user != null) {
+            UserHolder.setUser(user);
+            return true;
         }
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid token");
         return false;

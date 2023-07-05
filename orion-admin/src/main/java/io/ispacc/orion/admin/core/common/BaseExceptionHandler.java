@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class BaseExceptionHandler {
     @ExceptionHandler({OrionException.class})
     public CommonResult<?> handlerOrionException(OrionException e) {
-        if (StringUtils.isNotEmpty(e.getMessage())) return CommonResult.failed(e.getMessage());
+        if (StringUtils.isNotEmpty(e.getMessage())) {
+            return CommonResult.failed(e.getMessage());
+        }
         return CommonResult.failed(e.getErrorCode());
     }
 }

@@ -7,7 +7,6 @@ import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.admin.service.AdminService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     private final AdminService adminService;
-    @Value("${orion.jwt.tokenHead}")
-    private String tokenHead;
-
 
     @PostMapping("/register")
     public CommonResult<User> register(@Valid @RequestBody UserParam userParam) {
