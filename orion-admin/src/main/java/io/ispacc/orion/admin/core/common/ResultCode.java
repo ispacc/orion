@@ -16,6 +16,4 @@ public enum ResultCode implements IErrorCode {
 
     private final long code;
     private final String message;
-
-
 }

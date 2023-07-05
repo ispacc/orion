@@ -21,6 +21,7 @@ public class WebSocketServiceImpl implements WebSocketService {
 
     @Override
     public <T> void sendToUsers(List<Long> userIds, T msg) {
+        //todo 后改为线程池异步执行,使用CompletableFuture
         for (Long userId : userIds) {
             sendToUser(userId, msg);
         }

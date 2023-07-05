@@ -2,14 +2,13 @@ package io.ispacc.orion.admin.module.chat.controller;
 
 import io.ispacc.orion.admin.core.common.CommonResult;
 import io.ispacc.orion.admin.core.utils.UserHolder;
+import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,5 +43,16 @@ public class ChatController {
     @GetMapping("/room/{roomId}")
     public CommonResult<List<UserResp>> getUserByRoomId(@PathVariable Long roomId) {
         return CommonResult.success(chatService.getUsersByRoomId(roomId));
+    }
+
+    @PostMapping("/msg/room")
+    public CommonResult<?> send(@Valid RoomMessageReq message) {
+        Long msgId = chatService.sendMsgToRoomId(message, UserHolder.getUser().getUserId());
+        return CommonResult.success("msgId", msgId);
+    }
+
+    @PostMapping("/msg/user")
+    public CommonResult<?> send() {
+        return null;
     }
 }

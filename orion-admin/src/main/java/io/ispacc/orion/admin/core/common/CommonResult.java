@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 通用返回结果封装类
  */
@@ -42,6 +45,15 @@ public class CommonResult<T> {
      */
     public static <T> CommonResult<T> success(T data, String message) {
         return new CommonResult<>(ResultCode.SUCCESS.getCode(), message, data);
+    }
+
+    /**
+     * 成功返回结果
+     */
+    public static <T> CommonResult<Map<String, T>> success(String key, T value) {
+        Map<String, T> data = new HashMap<>();
+        data.put(key, value);
+        return new CommonResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
     }
 
     /**

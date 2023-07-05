@@ -12,6 +12,8 @@ import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
+import org.springframework.web.socket.messaging.SessionSubscribeEvent;
+import org.springframework.web.socket.messaging.SessionUnsubscribeEvent;
 
 import java.util.Map;
 
@@ -48,6 +50,14 @@ public class WebSocketEventListener {
         if (userId == null) return;
         redisTemplate.opsForSet().remove(RedisConstant.websocket_online_users, userId);
         //todo 循环发送事件,退出群组,告诉好友,俺不在线
+    }
+
+    @EventListener
+    public void handleWebSocketSessionSubscribeEvent(SessionSubscribeEvent event) {
+    }
+
+    @EventListener
+    public void handleWebSocketSessionUnsubscribeEvent(SessionUnsubscribeEvent event) {
     }
 
     private String getUserIdConn(MessageHeaders headers) {

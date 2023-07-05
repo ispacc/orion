@@ -4,7 +4,7 @@ import io.ispacc.orion.admin.core.constant.RedisConstant;
 import io.ispacc.orion.admin.core.utils.AssertUtil;
 import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.module.admin.entity.User;
-import io.ispacc.orion.admin.module.chat.controller.req.MessageReq;
+import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 import io.ispacc.orion.admin.module.chat.dao.MessageDao;
@@ -62,11 +62,12 @@ public class ChatServiceImpl implements ChatService {
 
     @Transactional
     @Override
-    public void sendMsgToRoomId(MessageReq messageReq, Long sendUserId) {
+    public Long sendMsgToRoomId(RoomMessageReq messageReq, Long sendUserId) {
         checkMsg(messageReq, sendUserId);
         Message message = MessageAdapter.buildEntity(messageReq, sendUserId);
         messageDao.save(message);
         applicationEventPublisher.publishEvent(new MessageSendEvent(this, message.getId()));
+        return message.getId();
     }
 
     /**
@@ -79,7 +80,7 @@ public class ChatServiceImpl implements ChatService {
      *
      * @param messageReq 消息内容
      */
-    private void checkMsg(MessageReq messageReq, Long sendUserId) {
+    private void checkMsg(RoomMessageReq messageReq, Long sendUserId) {
         AssertUtil.isNotEmpty(messageReq.getContent(), "消息不能为空");
         AssertUtil.isTrue(messageReq.getContent().length() < 500, "消息过长,熊宇航要打人了,兄die");
         Room room = roomDao.getRoomByIdExistsUserId(messageReq.getRoomId(), sendUserId);

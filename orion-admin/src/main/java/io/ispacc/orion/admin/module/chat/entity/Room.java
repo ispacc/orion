@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("t_room")
+@TableName("cms_chatroom")
 public class Room extends Model<User> {
     @TableId
     private Long id;
@@ -45,10 +45,10 @@ public class Room extends Model<User> {
     /**
      * 创建时间
      */
-    private LocalDateTime timeCreate;
+    private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
-    private LocalDateTime timeUpdate;
+    private LocalDateTime updateTime;
 }

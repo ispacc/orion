@@ -28,8 +28,6 @@ public class PrincipalHandshakeHandler extends DefaultHandshakeHandler {
         if (userId == null) return null;
         return new WebSocketPrincipal(userId);
     }
-
-
 }
 
 @AllArgsConstructor

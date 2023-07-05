@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("t_message")
+@TableName("cms_message")
 public class Message extends Model<User> {
     @TableId
     private Long id;
