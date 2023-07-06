@@ -1,5 +1,6 @@
 package io.ispacc.orion.admin.module.admin.controller;
 
+import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import io.ispacc.orion.admin.core.common.CommonResult;
 import io.ispacc.orion.admin.module.admin.dto.UserParam;
@@ -20,6 +21,7 @@ public class AdminController {
     private final AdminService adminService;
 
     @PostMapping("/register")
+    @SaIgnore
     public CommonResult<User> register(@Valid @RequestBody UserParam userParam) {
         User user = adminService.register(userParam);
         if (user == null) {
@@ -30,6 +32,7 @@ public class AdminController {
 
 
     @PostMapping("/login")
+    @SaIgnore
     public CommonResult<SaTokenInfo> login(@Valid @RequestBody UserParam userParam) {
         SaTokenInfo token = adminService.login(userParam.getUsername(), userParam.getPassword());
         if (token == null) {

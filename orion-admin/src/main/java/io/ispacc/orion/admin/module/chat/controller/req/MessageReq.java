@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
 
@@ -16,7 +17,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class MessageReq implements Serializable {
-    @NotBlank
+    @NotBlank(message = "消息不能为空")
+    @Length(max = 3, message = "输入消息过长")
     private String content;
 
     private Long replyMsgId;

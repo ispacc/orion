@@ -12,17 +12,30 @@ import io.netty.util.concurrent.FastThreadLocal;
  * @date 2023-06-13 11:12
  */
 public class UserHolder {
-    private static final FastThreadLocal<User> threadLocal = new FastThreadLocal<>();
-
-    public static void setUser(User user) {
-        threadLocal.set(user);
-    }
+    private static final FastThreadLocal<User> threadLocal1 = new FastThreadLocal<>();
+    private static final FastThreadLocal<Long> threadLocal2 = new FastThreadLocal<>();
 
     public static User getUser() {
-        return threadLocal.get();
+        return threadLocal1.get();
+    }
+
+    public static void setUser(User user) {
+        threadLocal1.set(user);
+    }
+
+    public static long getUserId() {
+        return threadLocal2.get();
+    }
+
+    public static void setUserId(Long userId) {
+        threadLocal2.set(userId);
     }
 
     public static void removeUser() {
-        threadLocal.remove();
+        threadLocal1.remove();
+    }
+
+    public static void removeUserId() {
+        threadLocal2.remove();
     }
 }

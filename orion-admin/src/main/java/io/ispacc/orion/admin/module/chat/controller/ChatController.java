@@ -33,7 +33,7 @@ public class ChatController {
      */
     @GetMapping("/user/room")
     public CommonResult<List<RoomResp>> getRoomByCurrentUserId() {
-        return CommonResult.success(chatService.getRoomsByUserId(UserHolder.getUser().getUserId()));
+        return CommonResult.success(chatService.getRoomsByUserId(UserHolder.getUserId()));
     }
 
     /**
@@ -41,7 +41,7 @@ public class ChatController {
      */
     @GetMapping("/user/friend")
     public CommonResult<List<UserFriendResp>> getUserFriendByCurrentUserId() {
-        return CommonResult.success(chatService.getFriendsByUserId(UserHolder.getUser().getUserId()));
+        return CommonResult.success(chatService.getFriendsByUserId(UserHolder.getUserId()));
     }
 
     /**
@@ -57,13 +57,13 @@ public class ChatController {
 
     @PostMapping("/msg/room")
     public CommonResult<?> send(@Valid @RequestBody RoomMessageReq message) {
-        Long msgId = chatService.sendMsgToRoomId(message, UserHolder.getUser().getUserId());
+        Long msgId = chatService.sendMsgToRoomId(message, UserHolder.getUserId());
         return CommonResult.success("msgId", msgId);
     }
 
     @PostMapping("/msg/user")
     public CommonResult<?> send(@Valid @RequestBody UserMessageReq message) {
-        Long msgId = chatService.sendMsgToUserId(message, UserHolder.getUser().getUserId());
+        Long msgId = chatService.sendMsgToUserId(message, UserHolder.getUserId());
         return CommonResult.success("msgId", msgId);
     }
 }

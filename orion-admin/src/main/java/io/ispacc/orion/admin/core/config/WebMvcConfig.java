@@ -1,6 +1,8 @@
 package io.ispacc.orion.admin.core.config;
 
-import io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor;
+import cn.dev33.satoken.interceptor.SaInterceptor;
+import cn.dev33.satoken.stp.StpUtil;
+import io.ispacc.orion.admin.core.utils.UserHolder;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -19,15 +21,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @AllArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {
-    private final LoginUserInterceptor loginUserInterceptor;
+    private final static String[] URL_CONSTANT = {"favicon.ico", "/swagger-resources/**", "/webjars/**", "/v3/**", "/swagger-ui.html/**", "/doc.html"};
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //为所有请求设置用户信息线程变量
-        registry.addInterceptor(loginUserInterceptor)
+        registry.addInterceptor(new SaInterceptor(h -> {
+                    StpUtil.checkLogin();
+                    UserHolder.setUserId(StpUtil.getLoginIdAsLong());
+                }))
                 .addPathPatterns("/**")
-                .excludePathPatterns("/admin/register", "/admin/login", "favicon.ico", "/swagger-resources/**", "/webjars/**", "/v3/**", "/swagger-ui.html/**", "/doc.html")
-                .order(1);
+                .excludePathPatterns(URL_CONSTANT);
     }
 
     //跨域
