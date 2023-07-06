@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * @author Wang Chao
@@ -23,5 +22,4 @@ public class UserFriendResp implements Serializable {
     private Long userId;
     private Long friendUserId;
     private UserResp friendUser;
-    private LocalDateTime createTime;
 }

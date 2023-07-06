@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Data
 public class MessageReq implements Serializable {
     @NotBlank(message = "消息不能为空")
-    @Length(max = 3, message = "输入消息过长")
+    @Length(max = 500, message = "输入消息过长")
     private String content;
 
     private Long replyMsgId;

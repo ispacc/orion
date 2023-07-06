@@ -7,7 +7,6 @@ import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.module.admin.dao.UserFriendDao;
 import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.admin.entity.UserFriend;
-import io.ispacc.orion.admin.module.chat.controller.req.MessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
@@ -145,7 +144,7 @@ public class ChatServiceImpl implements ChatService {
     private void checkRemoveUserByRoomId(Long roomId, Long currentUserId, Long userId) {
         Room room = roomDao.getById(roomId);
         AssertUtil.isNotNull(room, "群聊不存在");
-        AssertUtil.isTrue(Objects.equals(room.getManageUserId(), userId), "你不是群聊的管理员,无法移除");
+        AssertUtil.isTrue(Objects.equals(room.getManageUserId(), currentUserId), "你不是群聊的管理员,无法移除");
         AssertUtil.isTrue(userRoomDao.existsUserInRoom(userId, roomId), "用户已经不在群聊中了");
     }
 
@@ -160,7 +159,6 @@ public class ChatServiceImpl implements ChatService {
      * @param messageReq 消息内容
      */
     private void checkMsg(RoomMessageReq messageReq, Long sendUserId) {
-        baseCheckMsg(messageReq, sendUserId);
         Room room = roomDao.getRoomByIdExistsUserId(messageReq.getRoomId(), sendUserId);
         AssertUtil.isTrue(room != null, "发送的聊天室不存在,不要试探我了哥");
         if (Objects.nonNull(messageReq.getReplyMsgId())) {
@@ -169,16 +167,10 @@ public class ChatServiceImpl implements ChatService {
     }
 
     private void checkMsg(UserMessageReq messageReq, Long sendUserId) {
-        baseCheckMsg(messageReq, sendUserId);
         AssertUtil.isTrue(userFriendDao.countByUserIdAndUserFriendId(sendUserId, messageReq.getFriendUserId()) > 0, "当前用户不是你的好友");
         if (Objects.nonNull(messageReq.getReplyMsgId())) {
             AssertUtil.isTrue(messageDao.getByIdExistsRoomId(messageReq.getReplyMsgId(), null) != null, "回复的消息不存在");
         }
-    }
-
-    private void baseCheckMsg(MessageReq messageReq, Long sendUserId) {
-        AssertUtil.isNotEmpty(messageReq.getContent(), "消息不能为空");
-        AssertUtil.isTrue(messageReq.getContent().length() < 500, "消息过长,熊宇航要打人了,兄die");
     }
 
     //todo 后续根据熊宇航的redis module编写情况 可迁移至redis模块

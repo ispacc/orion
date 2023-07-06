@@ -9,5 +9,5 @@ import lombok.Data;
  */
 @Data
 public class UserMsgResp extends MessageResp {
-    private Long userId;
+    private Long friendUserId;
 }
