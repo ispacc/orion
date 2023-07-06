@@ -75,7 +75,7 @@
         $.get('http://localhost:8080/chat/user/friend', function (friends) {
             //subscribeToUser();
             friends.data.forEach(function (friend) {
-                console.log('friend: ' + friend.userResp.username);
+                console.log('friend: ' + friend.friendUser.username);
                 //addRoomToUI(room);
             });
         });

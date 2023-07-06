@@ -27,7 +27,7 @@ public class UserFriendAdapter {
         Map<Long, UserResp> userIdMap = userResp.stream().collect(Collectors.toMap(UserResp::getUserId, u -> u));
         for (UserFriendResp userFriendResp : userFriendRespList) {
             UserResp userRespTemp = userIdMap.get(userFriendResp.getFriendUserId());
-            userFriendResp.setUserResp(userRespTemp);
+            userFriendResp.setFriendUser(userRespTemp);
         }
         return userFriendRespList;
     }

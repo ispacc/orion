@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class UserFriendResp implements Serializable {
     private Long id;
     private Long userId;
-    private UserResp userResp;
     private Long friendUserId;
+    private UserResp friendUser;
     private LocalDateTime createTime;
 }

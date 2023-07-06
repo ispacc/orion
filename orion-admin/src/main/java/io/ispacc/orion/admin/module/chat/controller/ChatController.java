@@ -36,6 +36,9 @@ public class ChatController {
         return CommonResult.success(chatService.getRoomsByUserId(UserHolder.getUser().getUserId()));
     }
 
+    /**
+     * @return 获取当前用户好友信息, 默认线程变量一定有值, 交给拦截器做权限校验,并标注用户是否在线
+     */
     @GetMapping("/user/friend")
     public CommonResult<List<UserFriendResp>> getUserFriendByCurrentUserId() {
         return CommonResult.success(chatService.getFriendsByUserId(UserHolder.getUser().getUserId()));
