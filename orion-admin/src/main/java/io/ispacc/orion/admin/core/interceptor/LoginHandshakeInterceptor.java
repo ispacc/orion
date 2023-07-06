@@ -22,12 +22,13 @@ import java.util.Map;
 @Component
 @AllArgsConstructor
 @Slf4j
+@SuppressWarnings("NullableProblems")
 public class LoginHandshakeInterceptor implements HandshakeInterceptor {
 
     private final UserDao userDao;
 
     @Override
-    public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
+    public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) {
         //todo 对握手的请求进行权限校验，并保存请求用户信息
         // TODO 暂不修改
         attributes.put(WebSocketConstant.websocket_connect_user, userDao.getById("1667116738221449218").getUserId().toString());
