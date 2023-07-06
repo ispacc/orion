@@ -56,13 +56,13 @@ public class ChatController {
     }
 
     @PostMapping("/msg/room")
-    public CommonResult<?> send(@Valid RoomMessageReq message) {
+    public CommonResult<?> send(@Valid @RequestBody RoomMessageReq message) {
         Long msgId = chatService.sendMsgToRoomId(message, UserHolder.getUser().getUserId());
         return CommonResult.success("msgId", msgId);
     }
 
     @PostMapping("/msg/user")
-    public CommonResult<?> send(@Valid UserMessageReq message) {
+    public CommonResult<?> send(@Valid @RequestBody UserMessageReq message) {
         Long msgId = chatService.sendMsgToUserId(message, UserHolder.getUser().getUserId());
         return CommonResult.success("msgId", msgId);
     }

@@ -18,6 +18,7 @@ import io.ispacc.orion.admin.module.chat.dao.RoomDao;
 import io.ispacc.orion.admin.module.chat.entity.Message;
 import io.ispacc.orion.admin.module.chat.entity.Room;
 import io.ispacc.orion.admin.module.chat.event.RoomMessageSendEvent;
+import io.ispacc.orion.admin.module.chat.event.UserMessageSendEvent;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
 import io.ispacc.orion.admin.module.chat.service.adapter.MessageAdapter;
 import io.ispacc.orion.admin.module.chat.service.adapter.RoomAdapter;
@@ -89,6 +90,8 @@ public class ChatServiceImpl implements ChatService {
     public Long sendMsgToUserId(UserMessageReq messageReq, Long sendUserId) {
         checkMsg(messageReq, sendUserId);
         Message message = MessageAdapter.buildEntity(messageReq, sendUserId);
+        messageDao.save(message);
+        applicationEventPublisher.publishEvent(new UserMessageSendEvent(this, message.getId()));
         return message.getId();
     }
 

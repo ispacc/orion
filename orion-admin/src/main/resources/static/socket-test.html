@@ -48,7 +48,7 @@
     var stompClient = null;
 
     function connect() {
-        var socket = new SockJS('http://localhost:8080/orion?userId=1667116738221449218'); // WebSocket连接地址
+        var socket = new SockJS('http://localhost:8080/orion?userId=1668144389630816258'); // WebSocket连接地址
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
@@ -84,15 +84,16 @@
     function subscribeToRoom(roomId) {
         stompClient.subscribe('/topic/roomDestination/' + roomId, function (response) {
             var message = JSON.parse(response.body);
-            console.log('收到room消息: ' + message);
+            console.log('收到room消息: ' + message.data.content);
             showMessage(message);
         });
     }
 
     function subscribeToUser() {
+        console.log('监听消息: ' + '/user/queue/userDestination');
         stompClient.subscribe('/user/queue/userDestination', function (response) {
             var message = JSON.parse(response.body);
-            console.log('收到user消息: ' + message.msg);
+            console.log('收到user消息: ' + message.data.content);
             showMessage(message);
         });
     }

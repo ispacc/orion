@@ -21,6 +21,6 @@ public interface RoomMapper extends BaseMapper<Room> {
     @Select("SELECT r.* FROM map_user_chatroom ur LEFT JOIN cms_chatroom r ON ur.room_id = r.id WHERE ur.user_id = #{userId}")
     List<Room> getRoomsByUserId(@Param("userId") Long userId);
 
-    @Select("SELECT tr.* from map_user_chatroom ur left join cms_chatroom tr on ur.room_id = tr.id where tr.id=#{romId} and ur.user_id=#{userId}")
+    @Select("SELECT tr.* from map_user_chatroom ur left join cms_chatroom tr on ur.room_id = tr.id where tr.id=#{roomId} and ur.user_id=#{userId}")
     Room getRoomByIdExistsUserId(@Param("roomId") Long roomId, @Param("userId") Long userId);
 }

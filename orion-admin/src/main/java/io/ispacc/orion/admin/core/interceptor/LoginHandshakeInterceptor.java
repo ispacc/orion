@@ -30,7 +30,19 @@ public class LoginHandshakeInterceptor implements HandshakeInterceptor {
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
         //todo 对握手的请求进行权限校验，并保存请求用户信息
         // TODO 暂不修改
-        attributes.put(WebSocketConstant.websocket_connect_user, userDao.getById("1667116738221449218").getUserId().toString());
+        Long userId = null;
+        String[] queryParams = request.getURI().getQuery().split("&");
+        for (String param : queryParams) {
+            String[] keyValue = param.split("=");
+            String key = keyValue[0];
+            String value = keyValue[1];
+
+            if (key.equals("userId")) {
+                userId = Long.valueOf(value);
+                break;
+            }
+        }
+        attributes.put(WebSocketConstant.websocket_connect_user, userDao.getById(userId).getUserId().toString());
         return true;
     }
 
