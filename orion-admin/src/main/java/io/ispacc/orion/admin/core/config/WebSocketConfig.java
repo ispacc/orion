@@ -26,22 +26,22 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     private final LoginHandshakeInterceptor loginHandshakeInterceptor;
     private final PrincipalHandshakeHandler principalHandshakeHandler;
+    //ChannelInterceptor ImmutableMessageChannelInterceptor
+    //WebSocketHandler
 
     /**
      * 注册了一个名为/websocket的WebSocket端点
      * 并使用withSockJS()方法启用SockJS支持。
-     * 这意味着客户端可以通过WebSocket协议与/websocket端点进行通信，
+     * 这意味着客户端可以通过WebSocket协议与/orion端点进行通信，
      * 但如果客户端浏览器不支持WebSocket或无法直接连接到WebSocket端点，
      * 它会使用SockJS库提供的其他传输选项，例如轮询、长轮询等，以确保与WebSocket端点的通信能够正常进行。
      */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/orion")
-                .addInterceptors(loginHandshakeInterceptor) //拦截器 权限校验
-                .setHandshakeHandler(principalHandshakeHandler)//握手处理器 加入了身份信息 用于一对一聊天使用
-                .setAllowedOriginPatterns("*")
-                .withSockJS()
-        ;
+        registry.addEndpoint("/websocket")
+//                .addInterceptors(loginHandshakeInterceptor) //拦截器 权限校验
+//                .setHandshakeHandler(principalHandshakeHandler)//握手处理器 加入了身份信息 用于一对一聊天使用
+                .setAllowedOriginPatterns("*");
     }
 
 
