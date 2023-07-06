@@ -17,31 +17,10 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoomResp implements Serializable {
+public class UserFriendResp implements Serializable {
     private Long id;
-
-    /**
-     * room名称
-     */
-    private String name;
-
-    /**
-     * 图标
-     */
-    private String icon;
-
-    /**
-     * 最大人数
-     */
-    private Integer maxNumber;
-
-    /**
-     * 创建时间
-     */
+    private Long userId;
+    private UserResp userResp;
+    private Long friendUserId;
     private LocalDateTime createTime;
-
-    /**
-     * 更新时间
-     */
-    private LocalDateTime updateTime;
 }

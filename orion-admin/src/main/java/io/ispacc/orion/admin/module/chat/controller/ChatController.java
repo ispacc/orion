@@ -5,6 +5,7 @@ import io.ispacc.orion.admin.core.utils.UserHolder;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
+import io.ispacc.orion.admin.module.chat.controller.resp.UserFriendResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
 import jakarta.validation.Valid;
@@ -33,6 +34,11 @@ public class ChatController {
     @GetMapping("/user/room")
     public CommonResult<List<RoomResp>> getRoomByCurrentUserId() {
         return CommonResult.success(chatService.getRoomsByUserId(UserHolder.getUser().getUserId()));
+    }
+
+    @GetMapping("/user/friend")
+    public CommonResult<List<UserFriendResp>> getUserFriendByCurrentUserId() {
+        return CommonResult.success(chatService.getFriendsByUserId(UserHolder.getUser().getUserId()));
     }
 
     /**

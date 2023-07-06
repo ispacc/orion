@@ -1,14 +1,17 @@
 package io.ispacc.orion.admin.module.chat.service.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import io.ispacc.orion.admin.core.constant.RedisConstant;
 import io.ispacc.orion.admin.core.utils.AssertUtil;
 import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.module.admin.dao.UserFriendDao;
 import io.ispacc.orion.admin.module.admin.entity.User;
+import io.ispacc.orion.admin.module.admin.entity.UserFriend;
 import io.ispacc.orion.admin.module.chat.controller.req.MessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
+import io.ispacc.orion.admin.module.chat.controller.resp.UserFriendResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 import io.ispacc.orion.admin.module.chat.dao.MessageDao;
 import io.ispacc.orion.admin.module.chat.dao.RoomDao;
@@ -19,6 +22,7 @@ import io.ispacc.orion.admin.module.chat.service.ChatService;
 import io.ispacc.orion.admin.module.chat.service.adapter.MessageAdapter;
 import io.ispacc.orion.admin.module.chat.service.adapter.RoomAdapter;
 import io.ispacc.orion.admin.module.chat.service.adapter.UserAdapter;
+import io.ispacc.orion.admin.module.chat.service.adapter.UserFriendAdapter;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
@@ -26,10 +30,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,6 +55,16 @@ public class ChatServiceImpl implements ChatService {
     public List<RoomResp> getRoomsByUserId(Long userId) {
         List<Room> roomEntityList = roomDao.getByUserId(userId);
         return RoomAdapter.buildResp(roomEntityList);
+    }
+
+    @Override
+    public List<UserFriendResp> getFriendsByUserId(Long userId) {
+        List<UserFriend> userFriend = userFriendDao.getUserFriendIdsByUserId(userId);
+        if (CollectionUtil.isEmpty(userFriend)) return new ArrayList<>();
+        Set<Long> friendIds = userFriend.stream().map(UserFriend::getFriendUserId).collect(Collectors.toSet());
+        Set<Long> usersInOnline = getUsersInOnline(friendIds);
+        List<User> users = userDao.listByIds(friendIds);
+        return UserFriendAdapter.buildFriendResp(userFriend, usersInOnline, users);
     }
 
     @Override

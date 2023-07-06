@@ -3,6 +3,7 @@ package io.ispacc.orion.admin.module.chat.service;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
+import io.ispacc.orion.admin.module.chat.controller.resp.UserFriendResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface ChatService {
      * @return 用户加入的群组信息
      */
     List<RoomResp> getRoomsByUserId(Long userId);
+
+    List<UserFriendResp> getFriendsByUserId(Long userId);
 
     /**
      * 查询组中用户id,并判断用户是否在线

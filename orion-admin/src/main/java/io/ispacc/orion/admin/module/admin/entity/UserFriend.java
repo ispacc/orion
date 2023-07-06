@@ -21,7 +21,10 @@ import java.time.LocalDateTime;
 @TableName("ums_user_friend")
 public class UserFriend extends Model<User> {
     private Long id;
+
     private Long userId;
+
     private Long friendUserId;
+
     private LocalDateTime createTime;
 }

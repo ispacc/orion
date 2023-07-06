@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 用户表
@@ -21,9 +20,8 @@ import java.util.stream.Collectors;
 public class UserFriendDao extends ServiceImpl<UserFriendMapper, UserFriend> {
     private final UserFriendMapper userFriendMapper;
 
-    public List<Long> getUserFriendIdsByUserId(Long userId) {
-        List<UserFriend> userFriends = lambdaQuery().eq(UserFriend::getUserId, userId).list();
-        return userFriends.stream().map(UserFriend::getFriendUserId).collect(Collectors.toList());
+    public List<UserFriend> getUserFriendIdsByUserId(Long userId) {
+        return lambdaQuery().eq(UserFriend::getUserId, userId).list();
     }
 
     public Long countByUserIdAndUserFriendId(Long userId, Long userFriendId) {

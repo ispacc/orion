@@ -48,22 +48,35 @@
     var stompClient = null;
 
     function connect() {
-        var socket = new SockJS('http://localhost:8081/orion?token1=11'); // WebSocket连接地址
+        var socket = new SockJS('http://localhost:8080/orion?userId=1667116738221449218'); // WebSocket连接地址
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
             var userId = getUserId(); // 获取当前用户的ID
-            getJoinedRooms(userId); // 获取用户加入的群组信息
+            subscribeToUser()
+            addRoom()
+            addUser()
         }, {withCredentials: true});
     }
 
-    function getJoinedRooms(userId) {
+    function addRoom() {
         // 使用AJAX请求获取用户加入的群组信息
         $.get('http://localhost:8080/chat/user/room', function (rooms) {
-            subscribeToUser();
+            //subscribeToUser();
             rooms.data.forEach(function (room) {
-                subscribeToRoom(room.id);
+                console.log('room: ' + room.name);
                 addRoomToUI(room);
+            });
+        });
+    }
+
+    function addUser() {
+        // 使用AJAX请求获取用户加入的群组信息
+        $.get('http://localhost:8080/chat/user/friend', function (friends) {
+            //subscribeToUser();
+            friends.data.forEach(function (friend) {
+                console.log('friend: ' + friend.userResp.username);
+                //addRoomToUI(room);
             });
         });
     }

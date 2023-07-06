@@ -43,6 +43,5 @@ public class User extends Model<User> {
     private LocalDateTime updateTime;
     //备注
     private String remark;
-
 }
 
