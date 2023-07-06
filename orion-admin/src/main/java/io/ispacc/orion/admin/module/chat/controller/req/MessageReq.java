@@ -1,7 +1,8 @@
 package io.ispacc.orion.admin.module.chat.controller.req;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class MessageReq implements Serializable {
-    @NotEmpty
+    @NotBlank
     private String content;
 
     private Long replyMsgId;

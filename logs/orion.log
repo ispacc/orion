@@ -58,3 +58,1542 @@ org.springframework.messaging.simp.stomp.StompConversionException: The configure
 2023-07-05 12:14:51,132 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 10, active threads = 1, queued tasks = 0, completed tasks = 38]
 2023-07-05 12:44:50,998 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 10, active threads = 1, queued tasks = 0, completed tasks = 39]
 2023-07-05 13:14:51,117 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 10, active threads = 1, queued tasks = 0, completed tasks = 40]
+2023-07-05 13:44:51,075 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 3], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 10, active threads = 1, queued tasks = 0, completed tasks = 41]
+2023-07-05 14:00:18,883 INFO (LocalDevToolsAutoConfiguration.java:211)- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-05 14:00:18,892 ERROR (StompSubProtocolHandler.java:419)- Error publishing SessionDisconnectEvent[sessionId=d95dc5bf-122c-1343-610d-4c8d802be79e, CloseStatus[code=1001, reason=null]]
+org.springframework.data.redis.RedisSystemException: Redis exception
+	at org.springframework.data.redis.connection.lettuce.LettuceExceptionConverter.convert(LettuceExceptionConverter.java:72)
+	at org.springframework.data.redis.connection.lettuce.LettuceExceptionConverter.convert(LettuceExceptionConverter.java:41)
+	at org.springframework.data.redis.PassThroughExceptionTranslationStrategy.translate(PassThroughExceptionTranslationStrategy.java:40)
+	at org.springframework.data.redis.FallbackExceptionTranslationStrategy.translate(FallbackExceptionTranslationStrategy.java:38)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.convertLettuceAccessException(LettuceConnection.java:248)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.await(LettuceConnection.java:961)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.lambda$doInvoke$4(LettuceConnection.java:818)
+	at org.springframework.data.redis.connection.lettuce.LettuceInvoker$Synchronizer.invoke(LettuceInvoker.java:665)
+	at org.springframework.data.redis.connection.lettuce.LettuceInvoker.just(LettuceInvoker.java:109)
+	at org.springframework.data.redis.connection.lettuce.LettuceSetCommands.sRem(LettuceSetCommands.java:180)
+	at org.springframework.data.redis.connection.DefaultedRedisConnection.sRem(DefaultedRedisConnection.java:915)
+	at org.springframework.data.redis.connection.DefaultStringRedisConnection.sRem(DefaultStringRedisConnection.java:900)
+	at org.springframework.data.redis.core.DefaultSetOperations.lambda$remove$15(DefaultSetOperations.java:236)
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:406)
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:373)
+	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:97)
+	at org.springframework.data.redis.core.DefaultSetOperations.remove(DefaultSetOperations.java:236)
+	at io.ispacc.orion.admin.module.websocket.listener.WebSocketEventListener.handleWebSocketDisconnectListener(WebSocketEventListener.java:49)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.doInvoke(ApplicationListenerMethodAdapter.java:343)
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.processEvent(ApplicationListenerMethodAdapter.java:228)
+	at org.springframework.context.event.ApplicationListenerMethodAdapter.onApplicationEvent(ApplicationListenerMethodAdapter.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:437)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:370)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.publishEvent(StompSubProtocolHandler.java:415)
+	at org.springframework.web.socket.messaging.StompSubProtocolHandler.afterSessionEnded(StompSubProtocolHandler.java:650)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.clearSession(SubProtocolWebSocketHandler.java:531)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.afterConnectionClosed(SubProtocolWebSocketHandler.java:400)
+	at org.springframework.web.socket.handler.WebSocketHandlerDecorator.afterConnectionClosed(WebSocketHandlerDecorator.java:85)
+	at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.afterConnectionClosed(LoggingWebSocketHandlerDecorator.java:72)
+	at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.afterConnectionClosed(ExceptionWebSocketHandlerDecorator.java:78)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.onClose(StandardWebSocketHandlerAdapter.java:144)
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:658)
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:601)
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:554)
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:542)
+	at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.closeInternal(StandardWebSocketSession.java:235)
+	at org.springframework.web.socket.adapter.AbstractWebSocketSession.close(AbstractWebSocketSession.java:144)
+	at org.springframework.web.socket.handler.WebSocketSessionDecorator.close(WebSocketSessionDecorator.java:160)
+	at org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator.close(ConcurrentWebSocketSessionDecorator.java:271)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:289)
+	at org.springframework.web.socket.messaging.SubProtocolWebSocketHandler.stop(SubProtocolWebSocketHandler.java:302)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:234)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:373)
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:206)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:129)
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1069)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:173)
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1027)
+	at org.springframework.boot.devtools.restart.Restarter.stop(Restarter.java:308)
+	at org.springframework.boot.devtools.restart.Restarter.lambda$restart$1(Restarter.java:250)
+	at org.springframework.boot.devtools.restart.Restarter$LeakSafeThread.run(Restarter.java:614)
+Caused by: io.lettuce.core.RedisException: java.net.SocketException: Connection reset
+	at io.lettuce.core.internal.Exceptions.bubble(Exceptions.java:83)
+	at io.lettuce.core.internal.Futures.awaitOrCancel(Futures.java:250)
+	at io.lettuce.core.LettuceFutures.awaitOrCancel(LettuceFutures.java:74)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.await(LettuceConnection.java:959)
+	... 52 common frames omitted
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:256)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:18,893 INFO (CompositeLog.java:117)- Stopping...
+2023-07-05 14:00:18,893 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@74c71eea]]
+2023-07-05 14:00:18,893 INFO (CompositeLog.java:117)- Stopped.
+2023-07-05 14:00:18,930 INFO (AbstractInternalLogger.java:171)- Reconnecting, last destination was r-bp1yfwh6hywku5hhhcpd.redis.rds.aliyuncs.com/198.18.0.141:6379
+2023-07-05 14:00:18,998 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-05 14:00:19,014 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 64733 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-05 14:00:19,014 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-05 14:00:19,014 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-05 14:00:19,025 INFO (ReconnectionHandler.java:174)- Reconnected to r-bp1yfwh6hywku5hhhcpd.redis.rds.aliyuncs.com/<unresolved>:6379
+2023-07-05 14:00:19,033 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-05 14:00:19,034 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-05 14:00:19,408 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-05 14:00:19,409 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-05 14:00:19,431 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2023-07-05 14:00:19,766 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-05 14:00:19,770 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:19,770 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-05 14:00:19,771 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-05 14:00:19,794 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-05 14:00:19,794 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 760 ms
+2023-07-05 14:00:19,901 INFO (DirectJDKLog.java:173)- Pausing ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:19,901 ERROR (DirectJDKLog.java:175)- Socket accept failed
+java.nio.channels.AsynchronousCloseException: null
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:202)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.end(ServerSocketChannelImpl.java:376)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:399)
+	at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:521)
+	at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:79)
+	at org.apache.tomcat.util.net.Acceptor.run(Acceptor.java:128)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,901 WARN (DirectJDKLog.java:173)- Failed to unlock acceptor for [http-nio-8081] because the local address was not available
+2023-07-05 14:00:19,901 INFO (DirectJDKLog.java:173)- Stopping service [Tomcat]
+2023-07-05 14:00:19,903 INFO (DirectJDKLog.java:173)- Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-05 14:00:19,928 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,929 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [lettuce-nioEventLoop-4-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/sun.nio.ch.KQueue.poll(Native Method)
+ java.base@17.0.7/sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:122)
+ java.base@17.0.7/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:129)
+ java.base@17.0.7/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:146)
+ app//io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+ app//io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:879)
+ app//io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:526)
+ app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+ app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,929 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [lettuce-eventExecutorLoop-1-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
+ java.base@17.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3463)
+ java.base@17.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3434)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1623)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:435)
+ app//io.netty.util.concurrent.SingleThreadEventExecutor.takeTask(SingleThreadEventExecutor.java:244)
+ app//io.netty.util.concurrent.DefaultEventExecutor.run(DefaultEventExecutor.java:64)
+ app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+ app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,929 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [lettuce-eventExecutorLoop-1-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
+ java.base@17.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3463)
+ java.base@17.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3434)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1623)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:435)
+ app//io.netty.util.concurrent.SingleThreadEventExecutor.takeTask(SingleThreadEventExecutor.java:244)
+ app//io.netty.util.concurrent.DefaultEventExecutor.run(DefaultEventExecutor.java:64)
+ app//io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+ app//io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,930 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,930 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,930 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-6] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:00:19,931 INFO (DirectJDKLog.java:173)- Stopping ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:19,932 INFO (DirectJDKLog.java:173)- Destroying ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:20,063 INFO (HikariDataSource.java:350)- HikariPool-1 - Shutdown initiated...
+2023-07-05 14:00:20,064 INFO (HikariDataSource.java:352)- HikariPool-1 - Shutdown completed.
+2023-07-05 14:00:20,120 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 36236 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-05 14:00:20,120 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-05 14:00:20,120 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-05 14:00:20,224 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-05 14:00:20,224 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-05 14:00:20,228 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2023-07-05 14:00:20,298 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-05 14:00:20,299 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:20,299 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-05 14:00:20,299 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-05 14:00:20,304 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-05 14:00:20,304 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 183 ms
+2023-07-05 14:00:20,683 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-05 14:00:20,684 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]]
+2023-07-05 14:00:20,687 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-05 14:00:20,688 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-05 14:00:20,698 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-05 14:00:20,699 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]]
+2023-07-05 14:00:20,700 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-05 14:00:20,700 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-05 14:00:20,759 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-05 14:00:20,769 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:20,770 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-05 14:00:20,771 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-05 14:00:20,771 INFO (CompositeLog.java:117)- Starting...
+2023-07-05 14:00:20,771 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4d3aae94]]
+2023-07-05 14:00:20,772 INFO (CompositeLog.java:117)- Started.
+2023-07-05 14:00:20,774 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 0.674 seconds (process running for 74792.113)
+2023-07-05 14:00:20,775 INFO (ConditionEvaluationDeltaLoggingListener.java:63)- Condition evaluation unchanged
+2023-07-05 14:00:20,793 WARN (OptionalLiveReloadServer.java:62)- Unable to start LiveReload server
+2023-07-05 14:00:20,806 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:20,809 WARN (AbstractApplicationContext.java:616)- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2023-07-05 14:00:20,819 INFO (DirectJDKLog.java:173)- Pausing ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:20,819 INFO (DirectJDKLog.java:173)- Stopping service [Tomcat]
+2023-07-05 14:00:20,822 INFO (DirectJDKLog.java:173)- Stopping ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:20,822 INFO (DirectJDKLog.java:173)- Destroying ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:00:20,827 INFO (ConditionEvaluationReportLogger.java:82)-
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2023-07-05 14:00:20,834 ERROR (LoggingFailureAnalysisReporter.java:40)-
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2023-07-05 14:00:20,909 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-05 14:00:20,910 INFO (FrameworkServlet.java:532)- Initializing Servlet 'dispatcherServlet'
+2023-07-05 14:00:20,911 INFO (FrameworkServlet.java:554)- Completed initialization in 1 ms
+2023-07-05 14:01:12,336 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-05 14:01:12,350 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 65292 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-05 14:01:12,350 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-05 14:01:12,350 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-05 14:01:12,370 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-05 14:01:12,370 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-05 14:01:12,744 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-05 14:01:12,745 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-05 14:01:12,765 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2023-07-05 14:01:13,078 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-05 14:01:13,084 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:01:13,085 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-05 14:01:13,085 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-05 14:01:13,113 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-05 14:01:13,113 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 742 ms
+2023-07-05 14:01:13,960 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-05 14:01:13,961 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]]
+2023-07-05 14:01:13,965 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-05 14:01:13,966 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-05 14:01:14,076 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-05 14:01:14,091 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:01:14,099 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-05 14:01:14,101 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-05 14:01:14,102 INFO (CompositeLog.java:117)- Starting...
+2023-07-05 14:01:14,102 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6edebf94]]
+2023-07-05 14:01:14,102 INFO (CompositeLog.java:117)- Started.
+2023-07-05 14:01:14,109 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 1.986 seconds (process running for 2.261)
+2023-07-05 14:01:15,496 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-05 14:01:15,496 INFO (FrameworkServlet.java:532)- Initializing Servlet 'dispatcherServlet'
+2023-07-05 14:01:15,497 INFO (FrameworkServlet.java:554)- Completed initialization in 1 ms
+2023-07-05 14:01:25,683 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50] with root cause
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,683 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50] with root cause
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,683 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50] with root cause
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,683 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50] with root cause
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,691 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] threw exception
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,691 ERROR (DirectJDKLog.java:175)- Exception Processing ErrorPage[errorCode=0, location=/error]
+jakarta.servlet.ServletException: Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	... 36 common frames omitted
+2023-07-05 14:01:25,692 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] threw exception
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,697 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] threw exception
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,693 ERROR (DirectJDKLog.java:175)- Exception Processing ErrorPage[errorCode=0, location=/error]
+jakarta.servlet.ServletException: Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	... 36 common frames omitted
+2023-07-05 14:01:25,698 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] threw exception
+cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:01:25,698 ERROR (DirectJDKLog.java:175)- Exception Processing ErrorPage[errorCode=0, location=/error]
+jakarta.servlet.ServletException: Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	... 36 common frames omitted
+2023-07-05 14:01:25,698 ERROR (DirectJDKLog.java:175)- Exception Processing ErrorPage[errorCode=0, location=/error]
+jakarta.servlet.ServletException: Request processing failed: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: cn.dev33.satoken.exception.NotLoginException: token 无效：f1097f6c-8bef-44d7-862d-81ed7afa5e50
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:947)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:35)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	... 36 common frames omitted
+2023-07-05 14:01:41,125 WARN (ReflectLambdaMeta.java:41)- Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @fd0ff15
+2023-07-05 14:01:41,133 INFO (HikariDataSource.java:110)- HikariPool-1 - Starting...
+2023-07-05 14:01:41,403 INFO (HikariPool.java:565)- HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@179fa8a
+2023-07-05 14:01:41,405 INFO (HikariDataSource.java:123)- HikariPool-1 - Start completed.
+2023-07-05 14:01:41,412 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE (username = ? AND password = ?)
+2023-07-05 14:01:41,431 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: admin(String), 123(String)
+2023-07-05 14:01:41,468 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:41,474 INFO (SaLogForSlf4j.java:25)- SaSession [orion-token:login:session:1667116738221449218] 创建成功
+2023-07-05 14:01:41,474 INFO (SaLogForSlf4j.java:25)- 账号 1667116738221449218 登录成功 (loginType=login), 会话凭证 token=1eb5c8b6-0404-44d1-b96e-50f182e89279
+2023-07-05 14:01:53,022 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,022 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,022 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,022 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,023 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,023 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,023 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,023 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,048 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:53,047 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:53,047 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:53,048 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,050 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:01:53,075 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:53,075 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:53,075 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:01:53,075 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:02:13,618 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 3], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2023-07-05 14:03:09,295 INFO (LocalDevToolsAutoConfiguration.java:211)- Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-05 14:03:09,297 INFO (CompositeLog.java:117)- Stopping...
+2023-07-05 14:03:09,298 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6edebf94]]
+2023-07-05 14:03:09,298 INFO (CompositeLog.java:117)- Stopped.
+2023-07-05 14:03:10,302 INFO (DirectJDKLog.java:173)- Pausing ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:03:10,302 ERROR (DirectJDKLog.java:175)- Socket accept failed
+java.nio.channels.AsynchronousCloseException: null
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:202)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.end(ServerSocketChannelImpl.java:376)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:399)
+	at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:521)
+	at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:79)
+	at org.apache.tomcat.util.net.Acceptor.run(Acceptor.java:128)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,303 WARN (DirectJDKLog.java:173)- Failed to unlock acceptor for [http-nio-8081] because the local address was not available
+2023-07-05 14:03:10,303 INFO (DirectJDKLog.java:173)- Stopping service [Tomcat]
+2023-07-05 14:03:10,303 INFO (DirectJDKLog.java:173)- Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-05 14:03:10,306 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [Thread-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/java.lang.Thread.sleep(Native Method)
+ app//cn.dev33.satoken.dao.SaTokenDaoDefaultImpl.lambda$initRefreshThread$0(SaTokenDaoDefaultImpl.java:255)
+ app//cn.dev33.satoken.dao.SaTokenDaoDefaultImpl$$Lambda$1317/0x000000080181e570.run(Unknown Source)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,306 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,307 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,307 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,307 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-6] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,308 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-7] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,308 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,308 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [clientInboundChannel-9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-05 14:03:10,308 INFO (DirectJDKLog.java:173)- Stopping ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:03:10,309 INFO (DirectJDKLog.java:173)- Destroying ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:03:10,319 INFO (HikariDataSource.java:350)- HikariPool-1 - Shutdown initiated...
+2023-07-05 14:03:10,322 INFO (HikariDataSource.java:352)- HikariPool-1 - Shutdown completed.
+2023-07-05 14:03:10,360 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 65292 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-05 14:03:10,360 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-05 14:03:10,360 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-05 14:03:10,459 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-05 14:03:10,459 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-05 14:03:10,463 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2023-07-05 14:03:10,530 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-05 14:03:10,530 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:03:10,530 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-05 14:03:10,530 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-05 14:03:10,536 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-05 14:03:10,536 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 175 ms
+2023-07-05 14:03:10,876 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-05 14:03:10,877 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]]
+2023-07-05 14:03:10,878 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-05 14:03:10,878 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-05 14:03:10,927 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-05 14:03:10,936 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-05 14:03:10,937 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-05 14:03:10,937 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-05 14:03:10,937 INFO (CompositeLog.java:117)- Starting...
+2023-07-05 14:03:10,937 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4a7a21ba]]
+2023-07-05 14:03:10,937 INFO (CompositeLog.java:117)- Started.
+2023-07-05 14:03:10,940 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 0.595 seconds (process running for 119.093)
+2023-07-05 14:03:10,941 INFO (ConditionEvaluationDeltaLoggingListener.java:63)- Condition evaluation unchanged
+2023-07-05 14:03:11,314 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-05 14:03:11,314 INFO (FrameworkServlet.java:532)- Initializing Servlet 'dispatcherServlet'
+2023-07-05 14:03:11,315 INFO (FrameworkServlet.java:554)- Completed initialization in 1 ms
+2023-07-05 14:03:15,993 INFO (HikariDataSource.java:110)- HikariPool-2 - Starting...
+2023-07-05 14:03:16,214 INFO (HikariPool.java:565)- HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2caba608
+2023-07-05 14:03:16,215 INFO (HikariDataSource.java:123)- HikariPool-2 - Start completed.
+2023-07-05 14:03:16,215 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,216 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,250 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:16,261 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,261 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,300 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:16,301 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,301 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,321 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:16,321 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,321 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,343 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:16,343 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,344 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,364 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:16,364 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,364 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,374 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,375 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,385 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:16,385 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:16,386 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:16,395 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:16,409 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:34,234 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:34,234 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:34,234 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:34,234 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:34,235 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:34,235 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:34,235 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:34,235 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:34,255 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:34,255 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:34,256 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:34,256 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:35,143 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:35,143 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:35,144 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:35,144 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:35,146 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:35,146 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:03:35,146 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:35,146 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:03:35,162 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:35,162 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:35,167 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:03:35,168 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,183 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2023-07-05 14:04:41,183 WARN (HikariPool.java:804)- HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1m24s863ms).
+2023-07-05 14:04:41,204 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,204 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,209 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,209 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,213 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,213 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,214 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,214 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,227 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,227 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,229 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,229 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,229 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,229 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,230 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,231 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,231 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,231 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,233 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE user_id=?
+2023-07-05 14:04:41,233 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: 1667116738221449218(Long)
+2023-07-05 14:04:41,245 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,252 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,252 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,252 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-05 14:04:41,254 INFO (CompositeLog.java:117)- Stopping...
+2023-07-05 14:04:41,254 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4a7a21ba]]
+2023-07-05 14:04:41,254 INFO (CompositeLog.java:117)- Stopped.
+2023-07-05 14:04:42,270 INFO (HikariDataSource.java:350)- HikariPool-2 - Shutdown initiated...
+2023-07-05 14:04:42,272 INFO (HikariDataSource.java:352)- HikariPool-2 - Shutdown completed.
+2023-07-06 09:50:24,671 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-06 09:50:24,685 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 82212 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-06 09:50:24,686 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-06 09:50:24,686 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-06 09:50:24,707 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-06 09:50:24,707 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-06 09:50:25,102 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-06 09:50:25,104 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-06 09:50:25,124 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2023-07-06 09:50:25,478 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-06 09:50:25,483 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-06 09:50:25,484 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-06 09:50:25,484 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-06 09:50:25,514 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-06 09:50:25,514 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 807 ms
+2023-07-06 09:50:26,441 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-06 09:50:26,442 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]] 
+2023-07-06 09:50:26,445 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-06 09:50:26,446 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-06 09:50:26,557 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-06 09:50:26,572 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-06 09:50:26,580 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-06 09:50:26,582 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-06 09:50:26,582 INFO (CompositeLog.java:117)- Starting...
+2023-07-06 09:50:26,582 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5cbe3a6e]]
+2023-07-06 09:50:26,583 INFO (CompositeLog.java:117)- Started.
+2023-07-06 09:50:26,588 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 2.142 seconds (process running for 2.43)
+2023-07-06 09:50:27,906 INFO (CompositeLog.java:117)- Stopping...
+2023-07-06 09:50:27,906 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5cbe3a6e]]
+2023-07-06 09:50:27,906 INFO (CompositeLog.java:117)- Stopped.
+2023-07-06 09:56:16,242 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-06 09:56:16,255 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 82365 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-06 09:56:16,255 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-06 09:56:16,255 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-06 09:56:16,276 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-06 09:56:16,276 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-06 09:56:16,652 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-06 09:56:16,653 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-06 09:56:16,671 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2023-07-06 09:56:17,007 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-06 09:56:17,012 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-06 09:56:17,012 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-06 09:56:17,012 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-06 09:56:17,041 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-06 09:56:17,041 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 765 ms
+2023-07-06 09:56:17,955 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-06 09:56:17,956 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]] 
+2023-07-06 09:56:17,959 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-06 09:56:17,960 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-06 09:56:18,071 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-06 09:56:18,091 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-06 09:56:18,100 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-06 09:56:18,102 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-06 09:56:18,102 INFO (CompositeLog.java:117)- Starting...
+2023-07-06 09:56:18,102 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@708068f3]]
+2023-07-06 09:56:18,102 INFO (CompositeLog.java:117)- Started.
+2023-07-06 09:56:18,109 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 2.084 seconds (process running for 2.332)
+2023-07-06 09:57:17,608 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2023-07-06 10:15:24,648 INFO (CompositeLog.java:117)- Stopping...
+2023-07-06 10:15:24,648 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@708068f3]]
+2023-07-06 10:15:24,648 INFO (CompositeLog.java:117)- Stopped.
+2023-07-06 10:32:00,110 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-06 10:32:00,125 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 9814 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-06 10:32:00,126 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-06 10:32:00,126 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-06 10:32:00,148 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-06 10:32:00,148 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-06 10:32:00,567 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-06 10:32:00,568 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-06 10:32:00,593 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2023-07-06 10:32:00,933 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-06 10:32:00,937 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-06 10:32:00,938 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-06 10:32:00,938 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-06 10:32:00,966 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-06 10:32:00,967 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 818 ms
+2023-07-06 10:32:01,933 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-06 10:32:01,933 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]] 
+2023-07-06 10:32:01,937 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-06 10:32:01,937 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-06 10:32:02,047 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-06 10:32:02,062 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-06 10:32:02,070 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-06 10:32:02,071 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-06 10:32:02,072 INFO (CompositeLog.java:117)- Starting...
+2023-07-06 10:32:02,072 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@145e212f]]
+2023-07-06 10:32:02,072 INFO (CompositeLog.java:117)- Started.
+2023-07-06 10:32:02,078 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 2.179 seconds (process running for 2.589)
+2023-07-06 10:32:09,221 INFO (CompositeLog.java:117)- Stopping...
+2023-07-06 10:32:09,222 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@145e212f]]
+2023-07-06 10:32:09,222 INFO (CompositeLog.java:117)- Stopped.
+2023-07-06 10:41:23,978 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-06 10:41:23,994 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 10939 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-06 10:41:23,995 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-06 10:41:23,995 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-06 10:41:24,014 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-06 10:41:24,015 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-06 10:41:24,410 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-06 10:41:24,411 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-06 10:41:24,432 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2023-07-06 10:41:24,762 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-06 10:41:24,766 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-06 10:41:24,767 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-06 10:41:24,767 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-06 10:41:24,792 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-06 10:41:24,793 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 778 ms
+2023-07-06 10:41:25,702 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-06 10:41:25,702 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]] 
+2023-07-06 10:41:25,706 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-06 10:41:25,706 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-06 10:41:25,809 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-06 10:41:25,823 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-06 10:41:25,832 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-06 10:41:25,834 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-06 10:41:25,834 INFO (CompositeLog.java:117)- Starting...
+2023-07-06 10:41:25,834 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@69d69ac5]]
+2023-07-06 10:41:25,834 INFO (CompositeLog.java:117)- Started.
+2023-07-06 10:41:25,841 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 2.085 seconds (process running for 2.43)
+2023-07-06 10:41:27,949 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-06 10:41:27,949 INFO (FrameworkServlet.java:532)- Initializing Servlet 'dispatcherServlet'
+2023-07-06 10:41:27,951 INFO (FrameworkServlet.java:554)- Completed initialization in 1 ms
+2023-07-06 10:41:31,705 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token] with root cause
+cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:38)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-06 10:41:31,725 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] threw exception
+cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:38)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-06 10:41:31,726 ERROR (DirectJDKLog.java:175)- Exception Processing ErrorPage[errorCode=0, location=/error]
+jakarta.servlet.ServletException: Request processing failed: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:38)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	... 36 common frames omitted
+2023-07-06 10:41:31,891 INFO (AbstractOpenApiResource.java:369)- Init duration for springdoc-openapi is: 137 ms
+2023-07-06 10:41:34,428 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token] with root cause
+cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:38)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-06 10:41:34,430 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] threw exception
+cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:38)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-06 10:41:34,430 ERROR (DirectJDKLog.java:175)- Exception Processing ErrorPage[errorCode=0, location=/error]
+jakarta.servlet.ServletException: Request processing failed: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:642)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:410)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:340)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:277)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:358)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:222)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:304)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:149)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.getLoginIdAsLong(StpLogic.java:1059)
+	at cn.dev33.satoken.stp.StpUtil.getLoginIdAsLong(StpUtil.java:387)
+	at io.ispacc.orion.admin.core.interceptor.LoginUserInterceptor.preHandle(LoginUserInterceptor.java:38)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	... 36 common frames omitted
+2023-07-06 10:41:36,612 WARN (ReflectLambdaMeta.java:41)- Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @5b8d6519
+2023-07-06 10:41:36,624 INFO (HikariDataSource.java:110)- HikariPool-1 - Starting...
+2023-07-06 10:41:37,073 INFO (HikariPool.java:565)- HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@197c7ada
+2023-07-06 10:41:37,074 INFO (HikariDataSource.java:123)- HikariPool-1 - Start completed.
+2023-07-06 10:41:37,079 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE (username = ? AND password = ?)
+2023-07-06 10:41:37,092 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: admin(String), 123(String)
+2023-07-06 10:41:37,124 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-06 10:41:37,131 INFO (SaLogForSlf4j.java:25)- SaSession [orion-token:login:session:1667116738221449218] 创建成功
+2023-07-06 10:41:37,132 INFO (SaLogForSlf4j.java:25)- 账号 1667116738221449218 登录成功 (loginType=login), 会话凭证 token=9bcf5824-d76c-4242-888c-1bbb9797422c
+2023-07-06 10:41:52,526 WARN (AbstractHandlerExceptionResolver.java:207)- Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public io.ispacc.orion.admin.core.common.CommonResult io.ispacc.orion.admin.module.admin.controller.AdminController.login(io.ispacc.orion.admin.module.admin.dto.UserParam): [Field error in object 'userParam' on field 'email': rejected value [123fwefew]; codes [Email.userParam.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userParam.email,email]; arguments []; default message [email],[Ljakarta.validation.constraints.Pattern$Flag;@2b89b720,.*]; default message [邮箱格式不正确]] ]
+2023-07-06 10:42:00,898 WARN (AbstractHandlerExceptionResolver.java:207)- Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public io.ispacc.orion.admin.core.common.CommonResult io.ispacc.orion.admin.module.admin.controller.AdminController.login(io.ispacc.orion.admin.module.admin.dto.UserParam): [Field error in object 'userParam' on field 'password': rejected value []; codes [NotBlank.userParam.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userParam.password,password]; arguments []; default message [password]]; default message [请输入密码]] ]
+2023-07-06 10:42:25,352 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]

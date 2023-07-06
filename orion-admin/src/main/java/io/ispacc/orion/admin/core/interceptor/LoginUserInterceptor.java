@@ -32,6 +32,9 @@ public class LoginUserInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        if (UserHolder.getUser() != null) {
+            return true;
+        }
         Long userId = StpUtil.getLoginIdAsLong();
         User user = userDao.getById(userId);
         if (user != null) {
