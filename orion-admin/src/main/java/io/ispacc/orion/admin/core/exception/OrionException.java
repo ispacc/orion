@@ -1,5 +1,7 @@
-package io.ispacc.orion.admin.core.common;
+package io.ispacc.orion.admin.core.exception;
 
+import io.ispacc.orion.admin.core.common.IErrorCode;
+import io.ispacc.orion.admin.core.common.ResultCode;
 import lombok.Getter;
 import lombok.Setter;
 

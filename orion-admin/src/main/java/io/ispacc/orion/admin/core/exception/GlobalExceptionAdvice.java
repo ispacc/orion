@@ -1,6 +1,8 @@
-package io.ispacc.orion.admin.core.common;
+package io.ispacc.orion.admin.core.exception;
 
 import cn.dev33.satoken.exception.NotLoginException;
+import io.ispacc.orion.admin.core.common.CommonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -9,6 +11,17 @@ import java.util.Objects;
 
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
+
+    /**
+     * 运行时异常返回
+     */
+    @ExceptionHandler({OrionException.class})
+    public CommonResult<?> handlerOrionException(OrionException e) {
+        if (StringUtils.isNotEmpty(e.getMessage())) {
+            return CommonResult.failed(e.getMessage());
+        }
+        return CommonResult.failed(e.getErrorCode());
+    }
 
     /**
      * 入参校验异常统一返回
