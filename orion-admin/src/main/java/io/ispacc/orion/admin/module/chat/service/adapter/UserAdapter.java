@@ -19,8 +19,7 @@ public class UserAdapter {
                 .map(a -> {
                     UserResp resp = new UserResp();
                     BeanUtil.copyProperties(a, resp);
-                    if (onlineUserId.contains(a.getUserId())) resp.setOnline(1);
-                    else resp.setOnline(0);
+                    resp.setOnline(onlineUserId.contains(a.getUserId()) ? 1 : 0);
                     return resp;
                 }).collect(Collectors.toList());
     }

@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public SaTokenInfo login(String username, String password) {
         String token = null;
-//        密码需要客户端加密后传递
+        //  TODO 密码需要客户端加密后传递
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUsername, username).eq(User::getPassword, password));
         if (user == null) {
             return null;

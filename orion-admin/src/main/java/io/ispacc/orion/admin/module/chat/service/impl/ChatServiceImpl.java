@@ -61,7 +61,9 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public List<UserFriendResp> getFriendsByUserId(Long userId) {
         List<UserFriend> userFriend = userFriendDao.getUserFriendIdsByUserId(userId);
-        if (CollectionUtil.isEmpty(userFriend)) return new ArrayList<>();
+        if (CollectionUtil.isEmpty(userFriend)) {
+            return new ArrayList<>();
+        }
         Set<Long> friendIds = userFriend.stream().map(UserFriend::getFriendUserId).collect(Collectors.toSet());
         Set<Long> usersInOnline = getUsersInOnline(friendIds);
         List<User> users = userDao.listByIds(friendIds);
@@ -133,15 +135,21 @@ public class ChatServiceImpl implements ChatService {
     //将在线的当前用户存储到返回值map中
     //1在线 0离线
     private Set<Long> getUsersInOnline(Set<Long> userId) {
-        if (userId.size() < 1) return new HashSet<>();
+        if (userId.size() < 1) {
+            return new HashSet<>();
+        }
         //在线人数
         Long onlineSize = redisTemplate.opsForSet().size(RedisConstant.websocket_online_users);
         //如果为null,按照无人在线处理
-        if (onlineSize == null) return new HashSet<>();
+        if (onlineSize == null) {
+            return new HashSet<>();
+        }
         //如果在线人数过多的话,根据selectSize循环判断,否则获取所有onlineSize循环判断,节约内存
         if (onlineSize < 500) {
             Set<String> onlineUserIds = redisTemplate.opsForSet().members(RedisConstant.websocket_online_users);
-            if (onlineUserIds == null) return new HashSet<>();
+            if (onlineUserIds == null) {
+                return new HashSet<>();
+            }
             return onlineUserIds.stream().map(Long::parseLong).filter(userId::contains).collect(Collectors.toSet());
         } else {
             return userId.stream().filter(o -> redisTemplate.opsForSet().isMember(RedisConstant.websocket_online_users, o)).collect(Collectors.toSet());

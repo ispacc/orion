@@ -37,7 +37,9 @@ public class WebSocketEventListener {
         MessageHeaders headers = event.getMessage().getHeaders();
         String userId = getUserIdConn(headers);
         String sessionId = getSessionId(headers);
-        if (userId == null) return;
+        if (userId == null) {
+            return;
+        }
         redisTemplate.opsForSet().add(RedisConstant.websocket_online_users, userId);
     }
 
@@ -47,7 +49,9 @@ public class WebSocketEventListener {
         MessageHeaders headers = event.getMessage().getHeaders();
         String userId = getUserIdDisConn(headers);
         String sessionId = getSessionId(headers);
-        if (userId == null) return;
+        if (userId == null) {
+            return;
+        }
         redisTemplate.opsForSet().remove(RedisConstant.websocket_online_users, userId);
         //todo 循环发送事件,退出群组,告诉好友,俺不在线
     }
@@ -62,16 +66,22 @@ public class WebSocketEventListener {
 
     private String getUserIdConn(MessageHeaders headers) {
         GenericMessage<?> simpConnectMessage = headers.get(SimpMessageHeaderAccessor.CONNECT_MESSAGE_HEADER, GenericMessage.class);
-        if (simpConnectMessage == null) return null;
+        if (simpConnectMessage == null) {
+            return null;
+        }
         MessageHeaders messageHeaders = simpConnectMessage.getHeaders();
         Map<?, ?> map = messageHeaders.get(SimpMessageHeaderAccessor.SESSION_ATTRIBUTES, Map.class);
-        if (map == null) return null;
+        if (map == null) {
+            return null;
+        }
         return (String) map.get(WebSocketConstant.websocket_connect_user);
     }
 
     private String getUserIdDisConn(MessageHeaders headers) {
         Map<?, ?> map = headers.get(SimpMessageHeaderAccessor.SESSION_ATTRIBUTES, Map.class);
-        if (map == null) return null;
+        if (map == null) {
+            return null;
+        }
         return (String) map.get(WebSocketConstant.websocket_connect_user);
     }
 

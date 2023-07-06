@@ -38,7 +38,7 @@ public class LoginHandshakeInterceptor implements HandshakeInterceptor {
             String key = keyValue[0];
             String value = keyValue[1];
 
-            if (key.equals("userId")) {
+            if ("userId".equals(key)) {
                 userId = Long.valueOf(value);
                 break;
             }

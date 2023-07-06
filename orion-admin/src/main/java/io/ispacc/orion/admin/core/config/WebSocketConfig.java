@@ -68,6 +68,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 }
 
 //可拦截用户监听channel
+@SuppressWarnings("NullableProblems")
 class InChannelInterceptor implements ChannelInterceptor {
     @Override
     public Message<?> preSend(Message<?> message, MessageChannel channel) {
@@ -77,6 +78,7 @@ class InChannelInterceptor implements ChannelInterceptor {
 }
 
 //可拦截服务端发送的消息
+@SuppressWarnings("NullableProblems")
 class OutChannelInterceptor implements ChannelInterceptor {
     @Override
     public Message<?> preSend(Message<?> message, MessageChannel channel) {

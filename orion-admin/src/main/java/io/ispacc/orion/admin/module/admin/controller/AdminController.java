@@ -30,7 +30,7 @@ public class AdminController {
 
 
     @PostMapping("/login")
-    public CommonResult login(@Valid @RequestBody UserParam userParam) {
+    public CommonResult<SaTokenInfo> login(@Valid @RequestBody UserParam userParam) {
         SaTokenInfo token = adminService.login(userParam.getUsername(), userParam.getPassword());
         if (token == null) {
             return CommonResult.validateFailed("用户名或密码错误");

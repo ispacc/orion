@@ -88,11 +88,15 @@ public class AssertUtil {
     }
 
     public static void isNotNull(Object o1, String msg) {
-        if (o1 == null) throwException(msg);
+        if (o1 == null) {
+            throwException(msg);
+        }
     }
 
     public static void isNotNull(Object o1, IErrorCode errorCode) {
-        if (o1 == null) throwException(errorCode);
+        if (o1 == null) {
+            throwException(errorCode);
+        }
     }
 
     private static boolean isEmpty(Object obj) {

@@ -1597,3 +1597,105 @@ Caused by: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 t
 2023-07-06 10:41:52,526 WARN (AbstractHandlerExceptionResolver.java:207)- Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public io.ispacc.orion.admin.core.common.CommonResult io.ispacc.orion.admin.module.admin.controller.AdminController.login(io.ispacc.orion.admin.module.admin.dto.UserParam): [Field error in object 'userParam' on field 'email': rejected value [123fwefew]; codes [Email.userParam.email,Email.email,Email.java.lang.String,Email]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userParam.email,email]; arguments []; default message [email],[Ljakarta.validation.constraints.Pattern$Flag;@2b89b720,.*]; default message [邮箱格式不正确]] ]
 2023-07-06 10:42:00,898 WARN (AbstractHandlerExceptionResolver.java:207)- Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public io.ispacc.orion.admin.core.common.CommonResult io.ispacc.orion.admin.module.admin.controller.AdminController.login(io.ispacc.orion.admin.module.admin.dto.UserParam): [Field error in object 'userParam' on field 'password': rejected value []; codes [NotBlank.userParam.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userParam.password,password]; arguments []; default message [password]]; default message [请输入密码]] ]
 2023-07-06 10:42:25,352 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2023-07-06 11:12:25,357 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2023-07-06 11:42:25,320 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 3, active threads = 1, queued tasks = 0, completed tasks = 2]
+2023-07-06 12:12:57,431 WARN (HikariPool.java:804)- HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m49s504ms).
+2023-07-06 12:21:44,838 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 0, completed tasks = 3]
+2023-07-06 12:37:56,291 WARN (HikariPool.java:804)- HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s535ms).
+2023-07-06 12:54:00,705 WARN (HikariPool.java:804)- HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m34s414ms).
+2023-07-06 13:07:17,778 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 5, active threads = 1, queued tasks = 0, completed tasks = 4]
+2023-07-06 13:31:14,421 INFO (LocalDevToolsAutoConfiguration.java:211)- Restarting due to 31 class path changes (3 additions, 6 deletions, 22 modifications)
+2023-07-06 13:31:14,424 INFO (CompositeLog.java:117)- Stopping...
+2023-07-06 13:31:14,425 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@69d69ac5]]
+2023-07-06 13:31:14,425 INFO (CompositeLog.java:117)- Stopped.
+2023-07-06 13:31:15,433 INFO (DirectJDKLog.java:173)- Pausing ProtocolHandler ["http-nio-8081"]
+2023-07-06 13:31:15,433 ERROR (DirectJDKLog.java:175)- Socket accept failed
+java.nio.channels.AsynchronousCloseException: null
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:202)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.end(ServerSocketChannelImpl.java:376)
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:399)
+	at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:521)
+	at org.apache.tomcat.util.net.NioEndpoint.serverSocketAccept(NioEndpoint.java:79)
+	at org.apache.tomcat.util.net.Acceptor.run(Acceptor.java:128)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-06 13:31:15,434 WARN (DirectJDKLog.java:173)- Failed to unlock acceptor for [http-nio-8081] because the local address was not available
+2023-07-06 13:31:15,434 INFO (DirectJDKLog.java:173)- Stopping service [Tomcat]
+2023-07-06 13:31:15,438 INFO (DirectJDKLog.java:173)- Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-06 13:31:15,441 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-06 13:31:15,442 WARN (DirectJDKLog.java:173)- The web application [ROOT] appears to have started a thread named [Thread-7] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/java.lang.Thread.sleep(Native Method)
+ app//cn.dev33.satoken.dao.SaTokenDaoDefaultImpl.lambda$initRefreshThread$0(SaTokenDaoDefaultImpl.java:255)
+ app//cn.dev33.satoken.dao.SaTokenDaoDefaultImpl$$Lambda$1567/0x000000080190d7b8.run(Unknown Source)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-06 13:31:15,443 INFO (DirectJDKLog.java:173)- Stopping ProtocolHandler ["http-nio-8081"]
+2023-07-06 13:31:15,445 INFO (DirectJDKLog.java:173)- Destroying ProtocolHandler ["http-nio-8081"]
+2023-07-06 13:31:15,467 INFO (HikariDataSource.java:350)- HikariPool-1 - Shutdown initiated...
+2023-07-06 13:31:15,468 INFO (HikariDataSource.java:352)- HikariPool-1 - Shutdown completed.
+2023-07-06 13:31:15,515 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 10939 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-06 13:31:15,515 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-06 13:31:15,515 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-06 13:31:15,611 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-06 13:31:15,611 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-06 13:31:15,615 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2023-07-06 13:31:15,683 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-06 13:31:15,684 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-06 13:31:15,684 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-06 13:31:15,684 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-06 13:31:15,689 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-06 13:31:15,689 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 172 ms
+2023-07-06 13:31:16,029 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-06 13:31:16,029 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]] 
+2023-07-06 13:31:16,031 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-06 13:31:16,031 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-06 13:31:16,081 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-06 13:31:16,090 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-06 13:31:16,091 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-06 13:31:16,092 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://127.0.0.1:8081/doc.html
+2023-07-06 13:31:16,092 INFO (CompositeLog.java:117)- Starting...
+2023-07-06 13:31:16,092 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2f74396f]]
+2023-07-06 13:31:16,092 INFO (CompositeLog.java:117)- Started.
+2023-07-06 13:31:16,095 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 0.597 seconds (process running for 8700.312)
+2023-07-06 13:31:16,096 INFO (ConditionEvaluationDeltaLoggingListener.java:63)- Condition evaluation unchanged
+2023-07-06 13:32:15,864 INFO (WebSocketMessageBrokerStats.java:128)- WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2023-07-06 13:33:16,977 INFO (CompositeLog.java:117)- Stopping...
+2023-07-06 13:33:16,977 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@2f74396f]]
+2023-07-06 13:33:16,978 INFO (CompositeLog.java:117)- Stopped.
+2023-07-06 13:33:20,615 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-06 13:33:20,628 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 13550 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-06 13:33:20,628 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.0, Spring v6.0.9
+2023-07-06 13:33:20,629 INFO (SpringApplication.java:639)- The following 1 profile is active: "dev"
+2023-07-06 13:33:20,647 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-06 13:33:20,648 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-06 13:33:21,000 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-06 13:33:21,001 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-06 13:33:21,021 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2023-07-06 13:33:21,340 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-06 13:33:21,344 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-06 13:33:21,345 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-06 13:33:21,345 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-06 13:33:21,371 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-06 13:33:21,371 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 723 ms
+2023-07-06 13:33:22,202 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-06 13:33:22,203 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]] 
+2023-07-06 13:33:22,208 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-06 13:33:22,209 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-06 13:33:22,310 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-06 13:33:22,324 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-06 13:33:22,331 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-06 13:33:22,332 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://127.0.0.1:8081/doc.html
+2023-07-06 13:33:22,333 INFO (CompositeLog.java:117)- Starting...
+2023-07-06 13:33:22,333 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1cb8ec82]]
+2023-07-06 13:33:22,333 INFO (CompositeLog.java:117)- Started.
+2023-07-06 13:33:22,340 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 1.897 seconds (process running for 2.264)
+2023-07-06 13:33:23,732 INFO (CompositeLog.java:117)- Stopping...
+2023-07-06 13:33:23,732 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1cb8ec82]]
+2023-07-06 13:33:23,732 INFO (CompositeLog.java:117)- Stopped.
