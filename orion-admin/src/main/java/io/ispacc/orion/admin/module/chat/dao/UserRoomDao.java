@@ -26,4 +26,12 @@ public class UserRoomDao extends ServiceImpl<UserRoomMapper, UserRoom> {
         List<UserRoom> userRooms = lambdaQuery().eq(UserRoom::getRoomId, roomId).select(UserRoom::getUserId).list();
         return userRooms.stream().map(UserRoom::getUserId).collect(Collectors.toList());
     }
+
+    public boolean existsUserInRoom(Long userId, Long roomId) {
+        return lambdaQuery().eq(UserRoom::getRoomId, roomId).eq(UserRoom::getUserId, userId).count() > 0;
+    }
+
+    public void removeUser(Long userId, Long roomId) {
+        lambdaUpdate().eq(UserRoom::getUserId, userId).eq(UserRoom::getRoomId, roomId).remove();
+    }
 }

@@ -7,15 +7,20 @@ import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.module.admin.dao.UserFriendDao;
 import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.admin.entity.UserFriend;
+import io.ispacc.orion.admin.module.chat.controller.req.MessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.RoomMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.req.UserMessageReq;
 import io.ispacc.orion.admin.module.chat.controller.resp.RoomResp;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserFriendResp;
-import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
+import io.ispacc.orion.admin.module.chat.controller.resp.msg.RoomMsgResp;
+import io.ispacc.orion.admin.module.chat.controller.resp.msg.UserMsgResp;
+import io.ispacc.orion.admin.module.chat.controller.resp.user.RoomUserResp;
 import io.ispacc.orion.admin.module.chat.dao.MessageDao;
 import io.ispacc.orion.admin.module.chat.dao.RoomDao;
+import io.ispacc.orion.admin.module.chat.dao.UserRoomDao;
 import io.ispacc.orion.admin.module.chat.entity.Message;
 import io.ispacc.orion.admin.module.chat.entity.Room;
+import io.ispacc.orion.admin.module.chat.event.RoomMessageRemoveUserEvent;
 import io.ispacc.orion.admin.module.chat.event.RoomMessageSendEvent;
 import io.ispacc.orion.admin.module.chat.event.UserMessageSendEvent;
 import io.ispacc.orion.admin.module.chat.service.ChatService;
@@ -50,6 +55,7 @@ public class ChatServiceImpl implements ChatService {
     private final MessageDao messageDao;
     private final RedisTemplate<String, String> redisTemplate;
     private final ApplicationEventPublisher applicationEventPublisher;
+    private final UserRoomDao userRoomDao;
 
     @Override
     public List<RoomResp> getRoomsByUserId(Long userId) {
@@ -60,9 +66,7 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public List<UserFriendResp> getFriendsByUserId(Long userId) {
         List<UserFriend> userFriend = userFriendDao.getUserFriendIdsByUserId(userId);
-        if (CollectionUtil.isEmpty(userFriend)) {
-            return new ArrayList<>();
-        }
+        if (CollectionUtil.isEmpty(userFriend)) return new ArrayList<>();
         Set<Long> friendIds = userFriend.stream().map(UserFriend::getFriendUserId).collect(Collectors.toSet());
         Set<Long> usersInOnline = getUsersInOnline(friendIds);
         List<User> users = userDao.listByIds(friendIds);
@@ -70,11 +74,14 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    public List<UserResp> getUsersByRoomId(Long roomId) {
+    public List<RoomUserResp> getUsersByRoomId(Long roomId) {
+        Room room = roomDao.getById(roomId);
+        if (room == null) return new ArrayList<>();
         List<User> userEntityList = userDao.getByRoomId(roomId);
         Set<Long> userIds = userEntityList.stream().map(User::getUserId).collect(Collectors.toSet());
         Set<Long> onlineUserIds = getUsersInOnline(userIds);
-        return UserAdapter.buildResp(userEntityList, onlineUserIds);
+
+        return UserAdapter.buildResp(userEntityList, onlineUserIds, room.getManageUserId());
     }
 
     @Transactional
@@ -87,6 +94,7 @@ public class ChatServiceImpl implements ChatService {
         return message.getId();
     }
 
+    @Transactional
     @Override
     public Long sendMsgToUserId(UserMessageReq messageReq, Long sendUserId) {
         checkMsg(messageReq, sendUserId);
@@ -94,6 +102,51 @@ public class ChatServiceImpl implements ChatService {
         messageDao.save(message);
         applicationEventPublisher.publishEvent(new UserMessageSendEvent(this, message.getId()));
         return message.getId();
+    }
+
+    @Override
+    public List<RoomMsgResp> getPageMsgByRoomId(Long msgId, Long roomId) {
+        List<Message> messages = messageDao.getPageMsgByRoomId(msgId, roomId);
+        if (messages.size() < 1) return new ArrayList<>();
+        List<User> users = getUserByMessageList(messages);
+        return MessageAdapter.buildRoomMsgResp(messages, users);
+    }
+
+    @Override
+    public List<UserMsgResp> getPageMsgByFriendId(Long friendId, Long msgId) {
+        List<Message> messages = messageDao.getPageMsgByFriendId(msgId, friendId);
+        if (messages.size() < 1) return new ArrayList<>();
+        List<User> users = getUserByMessageList(messages);
+        return MessageAdapter.buildUserMsgResp(messages, users);
+    }
+
+    @Transactional
+    @Override
+    public void removeUserByRoomId(Long roomId, Long currentUserId, Long userId) {
+        checkRemoveUserByRoomId(roomId, currentUserId, userId);
+        userRoomDao.removeUser(userId, roomId);
+        applicationEventPublisher.publishEvent(new RoomMessageRemoveUserEvent(this, roomId, currentUserId, userId));
+    }
+
+    private List<User> getUserByMessageList(List<Message> messages) {
+        Set<Long> userIds = messages.stream().map(Message::getUserId).collect(Collectors.toSet());
+        return userDao.listByIds(userIds);
+    }
+
+    /**
+     * 检查群聊移除用户是否可行
+     * 1、群聊存在
+     * 2、用户存在群聊
+     * 3、用户是管理员
+     *
+     * @param roomId 群聊id
+     * @param userId 用户id
+     */
+    private void checkRemoveUserByRoomId(Long roomId, Long currentUserId, Long userId) {
+        Room room = roomDao.getById(roomId);
+        AssertUtil.isNotNull(room, "群聊不存在");
+        AssertUtil.isTrue(Objects.equals(room.getManageUserId(), userId), "你不是群聊的管理员,无法移除");
+        AssertUtil.isTrue(userRoomDao.existsUserInRoom(userId, roomId), "用户已经不在群聊中了");
     }
 
     /**
@@ -107,6 +160,7 @@ public class ChatServiceImpl implements ChatService {
      * @param messageReq 消息内容
      */
     private void checkMsg(RoomMessageReq messageReq, Long sendUserId) {
+        baseCheckMsg(messageReq, sendUserId);
         Room room = roomDao.getRoomByIdExistsUserId(messageReq.getRoomId(), sendUserId);
         AssertUtil.isTrue(room != null, "发送的聊天室不存在,不要试探我了哥");
         if (Objects.nonNull(messageReq.getReplyMsgId())) {
@@ -115,10 +169,16 @@ public class ChatServiceImpl implements ChatService {
     }
 
     private void checkMsg(UserMessageReq messageReq, Long sendUserId) {
+        baseCheckMsg(messageReq, sendUserId);
         AssertUtil.isTrue(userFriendDao.countByUserIdAndUserFriendId(sendUserId, messageReq.getFriendUserId()) > 0, "当前用户不是你的好友");
         if (Objects.nonNull(messageReq.getReplyMsgId())) {
             AssertUtil.isTrue(messageDao.getByIdExistsRoomId(messageReq.getReplyMsgId(), null) != null, "回复的消息不存在");
         }
+    }
+
+    private void baseCheckMsg(MessageReq messageReq, Long sendUserId) {
+        AssertUtil.isNotEmpty(messageReq.getContent(), "消息不能为空");
+        AssertUtil.isTrue(messageReq.getContent().length() < 500, "消息过长,熊宇航要打人了,兄die");
     }
 
     //todo 后续根据熊宇航的redis module编写情况 可迁移至redis模块
@@ -126,25 +186,18 @@ public class ChatServiceImpl implements ChatService {
     //将在线的当前用户存储到返回值map中
     //1在线 0离线
     private Set<Long> getUsersInOnline(Set<Long> userId) {
-        if (userId.size() < 1) {
-            return new HashSet<>();
-        }
+        if (userId.size() < 1) return new HashSet<>();
         //在线人数
         Long onlineSize = redisTemplate.opsForSet().size(RedisConstant.websocket_online_users);
         //如果为null,按照无人在线处理
-        if (onlineSize == null) {
-            return new HashSet<>();
-        }
+        if (onlineSize == null) return new HashSet<>();
         //如果在线人数过多的话,根据selectSize循环判断,否则获取所有onlineSize循环判断,节约内存
         if (onlineSize < 500) {
             Set<String> onlineUserIds = redisTemplate.opsForSet().members(RedisConstant.websocket_online_users);
-            if (onlineUserIds == null) {
-                return new HashSet<>();
-            }
+            if (onlineUserIds == null) return new HashSet<>();
             return onlineUserIds.stream().map(Long::parseLong).filter(userId::contains).collect(Collectors.toSet());
         } else {
             return userId.stream().filter(o -> redisTemplate.opsForSet().isMember(RedisConstant.websocket_online_users, o)).collect(Collectors.toSet());
         }
     }
-
 }

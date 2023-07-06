@@ -43,6 +43,16 @@ public class Room extends Model<User> {
     private Integer maxNumber;
 
     /**
+     * 管理员
+     */
+    private Long manageUserId;
+
+    /**
+     * 创建人
+     */
+    private Long createUserId;
+
+    /**
      * 创建时间
      */
     private LocalDateTime createTime;

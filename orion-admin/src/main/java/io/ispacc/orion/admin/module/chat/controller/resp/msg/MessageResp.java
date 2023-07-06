@@ -1,28 +1,24 @@
-package io.ispacc.orion.admin.module.chat.controller.resp;
+package io.ispacc.orion.admin.module.chat.controller.resp.msg;
 
-import lombok.AllArgsConstructor;
+import io.ispacc.orion.admin.module.chat.controller.resp.user.BaseUserResp;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * @author Wang Chao
  * @version V1.0
- * @date 2023-07-05 17:12
+ * @date 2023-07-06 18:33
  */
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class RoomMsgResp implements Serializable {
-
+public class MessageResp {
     private Long id;
 
     private Long roomId;
 
     private Long userId;
 
+    private BaseUserResp userInfo;
     private String content;
     private Long replyMsgId;
     private LocalDateTime createTime;

@@ -1,5 +1,6 @@
 package io.ispacc.orion.admin.module.chat.controller.resp;
 
+import io.ispacc.orion.admin.module.chat.controller.resp.user.UserResp;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

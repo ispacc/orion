@@ -22,8 +22,12 @@ CREATE TABLE cms_chatroom
     name        varchar(255) comment '群组姓名',
     icon        varchar(255) default null comment '群图标',
     max_number  int          default '100' comment '最大在线人数',
+    manage_user bigint comment '群主',
+    create_user bigint comment '创建人',
     create_time datetime     default CURRENT_TIMESTAMP comment '创建时间',
-    update_time datetime     default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间'
+    update_time datetime     default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
+    FOREIGN KEY (manage_user) REFERENCES ums_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (create_user) REFERENCES ums_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
 ) comment '群组';
 
 CREATE TABLE map_user_chatroom

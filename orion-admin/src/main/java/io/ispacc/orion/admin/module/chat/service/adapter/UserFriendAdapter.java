@@ -3,7 +3,7 @@ package io.ispacc.orion.admin.module.chat.service.adapter;
 import io.ispacc.orion.admin.module.admin.entity.User;
 import io.ispacc.orion.admin.module.admin.entity.UserFriend;
 import io.ispacc.orion.admin.module.chat.controller.resp.UserFriendResp;
-import io.ispacc.orion.admin.module.chat.controller.resp.UserResp;
+import io.ispacc.orion.admin.module.chat.controller.resp.user.UserResp;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
