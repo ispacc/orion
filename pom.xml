@@ -22,7 +22,7 @@
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <jjwt.version>0.11.5</jjwt.version>
         <mysql-connector-j.version>8.0.33</mysql-connector-j.version>
-        <fastjson2.version>2.0.32</fastjson2.version>
+        <fastjson2.version>2.0.34</fastjson2.version>
         <knife4j.version>4.1.0</knife4j.version>
         <websocket.version>3.1.0</websocket.version>
         <hutool-all.version>5.8.20</hutool-all.version>
