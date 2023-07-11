@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: test
+  application:
+    name: orion-admin
+
+server:
+  port: 8081
+
+sa-token:
+  token-name: orion-token
+  token-prefix: Bearer
+  timeout: 3600
+  active-timeout: 7200
+  is-concurrent: false
+  is-share: true
+  isReadCookie: false
+  token-style: uuid
+  is-log: true
+
+
+knife4j:
+  enable: true
+  basic:
+    enable: true
+    username: root
+    password: root
+  setting:
+    swagger-model-name: 数据模型
+    enable-version: true
+    enable-footer: false
+
+mybatis-plus:
+  # 设置Mapper接口所对应的XML文件位置，如果你在Mapper接口中有自定义方法，需要进行该配置
+  mapper-locations: classpath*:mapper/*.xml
+  # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
+  type-aliases-package: io.ispacc.orion.admin

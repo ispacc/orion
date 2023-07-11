@@ -1,0 +1,152 @@
+2023-07-11 09:43:01,018 INFO (Version.java:21)- HV000001: Hibernate Validator 8.0.0.Final
+2023-07-11 09:43:01,033 INFO (StartupInfoLogger.java:51)- Starting OrionAdminApplication using Java 17.0.7 with PID 19081 (/Users/berior/Developer/IdeaProjects/orion/orion-admin/target/classes started by berior in /Users/berior/Developer/IdeaProjects/orion)
+2023-07-11 09:43:01,033 DEBUG (StartupInfoLogger.java:52)- Running with Spring Boot v3.1.1, Spring v6.0.10
+2023-07-11 09:43:01,033 INFO (SpringApplication.java:640)- The following 1 profile is active: "test"
+2023-07-11 09:43:01,055 INFO (DeferredLog.java:250)- Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-11 09:43:01,055 INFO (DeferredLog.java:250)- For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-11 09:43:01,390 INFO (RepositoryConfigurationDelegate.java:291)- Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-11 09:43:01,391 INFO (RepositoryConfigurationDelegate.java:138)- Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-11 09:43:01,411 INFO (RepositoryConfigurationDelegate.java:208)- Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2023-07-11 09:43:01,716 INFO (TomcatWebServer.java:108)- Tomcat initialized with port(s): 8081 (http)
+2023-07-11 09:43:01,720 INFO (DirectJDKLog.java:173)- Initializing ProtocolHandler ["http-nio-8081"]
+2023-07-11 09:43:01,720 INFO (DirectJDKLog.java:173)- Starting service [Tomcat]
+2023-07-11 09:43:01,721 INFO (DirectJDKLog.java:173)- Starting Servlet engine: [Apache Tomcat/10.1.10]
+2023-07-11 09:43:01,747 INFO (DirectJDKLog.java:173)- Initializing Spring embedded WebApplicationContext
+2023-07-11 09:43:01,748 INFO (ServletWebServerApplicationContext.java:291)- Root WebApplicationContext: initialization completed in 692 ms
+2023-07-11 09:43:02,571 INFO (SaLogForSlf4j.java:25)- 全局组件 SaLog 载入成功: io.ispacc.orion.admin.core.common.SaLogForSlf4j
+2023-07-11 09:43:02,572 INFO (SaLogForSlf4j.java:25)- 全局配置 SaTokenConfig [tokenName=orion-token, timeout=3600, activeTimeout=7200, dynamicActiveTimeout=false, isConcurrent=false, isShare=true, maxLoginCount=12, maxTryTimes=12, isReadBody=true, isReadHeader=true, isReadCookie=false, isWriteHeader=false, tokenStyle=uuid, dataRefreshPeriod=30, tokenSessionCheckLogin=true, autoRenew=true, tokenPrefix=Bearer, isPrint=true, isLog=true, logLevel=trace, logLevelInt=1, isColorLog=true, jwtSecretKey=null, basic=, currDomain=null, sameTokenTimeout=86400, checkSameToken=false, cookie=SaCookieConfig [domain=null, path=null, secure=false, httpOnly=false, sameSite=null], sign=SaSignConfig [secretKey=null, timestampDisparity=900000, isCheckNonce=true]] 
+2023-07-11 09:43:02,575 INFO (SaLogForSlf4j.java:25)- 全局组件 SaTokenContext 载入成功: cn.dev33.satoken.spring.SaTokenContextForSpringInJakartaServlet
+2023-07-11 09:43:02,576 INFO (SaLogForSlf4j.java:25)- 全局组件 SaJsonTemplate 载入成功: cn.dev33.satoken.spring.json.SaJsonTemplateForJackson
+2023-07-11 09:43:02,674 INFO (OptionalLiveReloadServer.java:59)- LiveReload server is running on port 35729
+2023-07-11 09:43:02,688 INFO (DirectJDKLog.java:173)- Starting ProtocolHandler ["http-nio-8081"]
+2023-07-11 09:43:02,697 INFO (TomcatWebServer.java:220)- Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-11 09:43:02,699 INFO (Knife4jConfig.java:27)- 项目启动启动成功！Knife4j 接口文档地址: http://192.168.28.159:8081/doc.html
+2023-07-11 09:43:02,699 INFO (CompositeLog.java:117)- Starting...
+2023-07-11 09:43:02,699 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@17594c0b]]
+2023-07-11 09:43:02,700 INFO (CompositeLog.java:117)- Started.
+2023-07-11 09:43:02,705 INFO (StartupInfoLogger.java:57)- Started OrionAdminApplication in 1.887 seconds (process running for 2.111)
+2023-07-11 09:43:04,843 INFO (DirectJDKLog.java:173)- Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-11 09:43:04,844 INFO (FrameworkServlet.java:532)- Initializing Servlet 'dispatcherServlet'
+2023-07-11 09:43:04,845 INFO (FrameworkServlet.java:554)- Completed initialization in 1 ms
+2023-07-11 09:43:08,114 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token] with root cause
+cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.checkLogin(StpLogic.java:923)
+	at cn.dev33.satoken.stp.StpUtil.checkLogin(StpUtil.java:331)
+	at io.ispacc.orion.admin.core.config.WebMvcConfig.lambda$addInterceptors$0(WebMvcConfig.java:30)
+	at cn.dev33.satoken.interceptor.SaInterceptor.preHandle(SaInterceptor.java:114)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-11 09:43:08,152 WARN (AbstractHandlerExceptionResolver.java:207)- Resolved [cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token]
+2023-07-11 09:43:08,298 INFO (AbstractOpenApiResource.java:369)- Init duration for springdoc-openapi is: 137 ms
+2023-07-11 09:43:12,390 ERROR (DirectJDKLog.java:175)- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token] with root cause
+cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token
+	at cn.dev33.satoken.exception.NotLoginException.newInstance(NotLoginException.java:134)
+	at cn.dev33.satoken.stp.StpLogic.getLoginId(StpLogic.java:941)
+	at cn.dev33.satoken.stp.StpLogic.checkLogin(StpLogic.java:923)
+	at cn.dev33.satoken.stp.StpUtil.checkLogin(StpUtil.java:331)
+	at io.ispacc.orion.admin.core.config.WebMvcConfig.lambda$addInterceptors$0(WebMvcConfig.java:30)
+	at cn.dev33.satoken.interceptor.SaInterceptor.preHandle(SaInterceptor.java:114)
+	at org.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at com.github.xiaoymin.knife4j.extend.filter.basic.JakartaServletSecurityBasicAuthFilter.doFilter(JakartaServletSecurityBasicAuthFilter.java:55)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-07-11 09:43:12,392 WARN (AbstractHandlerExceptionResolver.java:207)- Resolved [cn.dev33.satoken.exception.NotLoginException: 未能读取到有效 token]
+2023-07-11 09:43:14,435 WARN (AbstractHandlerExceptionResolver.java:207)- Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public io.ispacc.orion.admin.core.common.CommonResult<cn.dev33.satoken.stp.SaTokenInfo> io.ispacc.orion.admin.module.admin.controller.AdminController.login(io.ispacc.orion.admin.module.admin.dto.UserParam): [Field error in object 'userParam' on field 'password': rejected value []; codes [NotBlank.userParam.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userParam.password,password]; arguments []; default message [password]]; default message [请输入密码]] ]
+2023-07-11 09:43:19,261 WARN (ReflectLambdaMeta.java:41)- Unable to make field private final java.lang.Class java.lang.invoke.SerializedLambda.capturingClass accessible: module java.base does not "opens java.lang.invoke" to unnamed module @134af564
+2023-07-11 09:43:19,278 INFO (HikariDataSource.java:110)- HikariPool-1 - Starting...
+2023-07-11 09:43:20,322 INFO (HikariPool.java:565)- HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@49acaf8d
+2023-07-11 09:43:20,334 INFO (HikariDataSource.java:123)- HikariPool-1 - Start completed.
+2023-07-11 09:43:20,357 DEBUG (BaseJdbcLogger.java:137)- ==>  Preparing: SELECT user_id,username,password,icon,email,status,nickname,create_time,update_time,remark FROM ums_user WHERE (username = ? AND password = ? AND status = ?)
+2023-07-11 09:43:20,376 DEBUG (BaseJdbcLogger.java:137)- ==> Parameters: admin(String), 123(String), 1(Integer)
+2023-07-11 09:43:20,412 DEBUG (BaseJdbcLogger.java:137)- <==      Total: 1
+2023-07-11 09:43:20,417 INFO (SaLogForSlf4j.java:25)- SaSession [orion-token:login:session:1667116738221449218] 创建成功
+2023-07-11 09:43:20,418 INFO (SaLogForSlf4j.java:25)- 账号 1667116738221449218 登录成功 (loginType=login), 会话凭证 token=618fb12b-5bfe-4cad-b9da-0b51d711afc3
+2023-07-11 09:43:31,145 INFO (CompositeLog.java:117)- Stopping...
+2023-07-11 09:43:31,145 INFO (CompositeLog.java:117)- BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@17594c0b]]
+2023-07-11 09:43:31,145 INFO (CompositeLog.java:117)- Stopped.
+2023-07-11 09:43:32,169 INFO (HikariDataSource.java:350)- HikariPool-1 - Shutdown initiated...
+2023-07-11 09:43:32,172 INFO (HikariDataSource.java:352)- HikariPool-1 - Shutdown completed.

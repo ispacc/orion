@@ -1,0 +1,7 @@
+server:
+  port: 443
+  ssl:
+    key-alias: alias
+    key-store-password: i4kim12j
+    key-store-type: PKCS12
+    key-store: classpath:api.flysean.love.pfx
