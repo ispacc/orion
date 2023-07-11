@@ -39,6 +39,17 @@ public class ChatController {
     }
 
     /**
+     * 根据群聊id获取所有用户,并标注用户是否在线
+     *
+     * @param roomId 群聊id
+     * @return 用户信息
+     */
+    @GetMapping("/room/{roomId}")
+    public CommonResult<List<RoomUserResp>> getUserByRoomId(@PathVariable Long roomId) {
+        return CommonResult.success(chatService.getUsersByRoomId(roomId));
+    }
+
+    /**
      * @return 获取当前用户好友信息, 默认线程变量一定有值, 交给拦截器做权限校验,并标注用户是否在线
      */
     @GetMapping("/user/friend")
@@ -92,17 +103,6 @@ public class ChatController {
     public CommonResult<?> send(@Valid @RequestBody UserMessageReq message) {
         Long msgId = chatService.sendMsgToUserId(message, UserHolder.getUserId());
         return CommonResult.success("msgId", msgId);
-    }
-
-    /**
-     * 根据群聊id获取所有用户,并标注用户是否在线
-     *
-     * @param roomId 群聊id
-     * @return 用户信息
-     */
-    @GetMapping("/room/{roomId}")
-    public CommonResult<List<RoomUserResp>> getUserByRoomId(@PathVariable Long roomId) {
-        return CommonResult.success(chatService.getUsersByRoomId(roomId));
     }
 
     /**
