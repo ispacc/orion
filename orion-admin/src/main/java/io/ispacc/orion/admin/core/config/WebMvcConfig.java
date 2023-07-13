@@ -2,7 +2,6 @@ package io.ispacc.orion.admin.core.config;
 
 import cn.dev33.satoken.interceptor.SaInterceptor;
 import cn.dev33.satoken.stp.StpUtil;
-import io.ispacc.orion.admin.core.utils.UserHolder;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -26,10 +25,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //为所有请求设置用户信息线程变量
-        registry.addInterceptor(new SaInterceptor(h -> {
-                    StpUtil.checkLogin();
-                    UserHolder.setUserId(StpUtil.getLoginIdAsLong());
-                }))
+        registry.addInterceptor(new SaInterceptor(h -> StpUtil.checkLogin()))
                 .addPathPatterns("/**")
                 .excludePathPatterns(URL_CONSTANT);
     }

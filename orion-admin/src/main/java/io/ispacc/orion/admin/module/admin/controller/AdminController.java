@@ -20,6 +20,13 @@ public class AdminController {
 
     private final AdminService adminService;
 
+    /**
+     * Registers a new user with the given user parameters.
+     *
+     * @param userParam the user parameters containing the necessary details for registration
+     * @return the result of the registration process. Returns a {@link CommonResult} object with the registered user if successful,
+     * or a failed result if the registration process fails
+     */
     @PostMapping("/register")
     @SaIgnore
     public CommonResult<User> register(@Valid @RequestBody UserParam userParam) {

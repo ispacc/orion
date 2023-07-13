@@ -14,7 +14,6 @@ sa-token:
   active-timeout: 7200
   is-concurrent: false
   is-share: true
-  isReadCookie: false
   token-style: uuid
   is-log: true
 

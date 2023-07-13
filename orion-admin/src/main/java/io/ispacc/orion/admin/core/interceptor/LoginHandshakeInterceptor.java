@@ -1,8 +1,8 @@
 package io.ispacc.orion.admin.core.interceptor;
 
+import cn.dev33.satoken.stp.StpUtil;
 import io.ispacc.orion.admin.core.constant.WebSocketConstant;
-import io.ispacc.orion.admin.module.admin.dao.UserDao;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -20,30 +20,20 @@ import java.util.Map;
  * @date 2023-06-14 20:14
  */
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Slf4j
 @SuppressWarnings("NullableProblems")
 public class LoginHandshakeInterceptor implements HandshakeInterceptor {
 
-    private final UserDao userDao;
-
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) {
-        //todo 对握手的请求进行权限校验，并保存请求用户信息
-        // TODO 暂不修改
-        Long userId = null;
-        String[] queryParams = request.getURI().getQuery().split("&");
-        for (String param : queryParams) {
-            String[] keyValue = param.split("=");
-            String key = keyValue[0];
-            String value = keyValue[1];
-
-            if ("userId".equals(key)) {
-                userId = Long.valueOf(value);
-                break;
-            }
+        // 未登录情况下拒绝握手
+        if (!StpUtil.isLogin()) {
+            return false;
         }
-        attributes.put(WebSocketConstant.websocket_connect_user, userDao.getById(userId).getUserId().toString());
+
+        // 标记 userId，握手成功
+        attributes.put(WebSocketConstant.websocket_connect_user, StpUtil.getLoginIdAsLong());
         return true;
     }
 
