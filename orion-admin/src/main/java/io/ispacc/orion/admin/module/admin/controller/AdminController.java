@@ -37,7 +37,13 @@ public class AdminController {
         return CommonResult.success(null);
     }
 
-
+    /**
+     * Authenticates the user with the specified username and password.
+     *
+     * @param userParam the user parameters containing the username and password of the user to authenticate
+     * @return the result of the login process. Returns a {@link CommonResult} object with a {@link SaTokenInfo} object representing
+     * the authentication result if successful, or a failed result with an error message if the login process fails
+     */
     @PostMapping("/login")
     @SaIgnore
     public CommonResult<SaTokenInfo> login(@Valid @RequestBody UserParam userParam) {

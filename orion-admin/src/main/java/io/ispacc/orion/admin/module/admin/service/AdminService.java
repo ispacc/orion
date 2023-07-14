@@ -8,16 +8,19 @@ public interface AdminService {
 
 
     /**
-     * 登录功能
+     * Authenticates the user with the specified username and password.
      *
-     * @param username 用户名
-     * @param password 密码
-     * @return 生成的JWT的token
+     * @param username the username of the user to authenticate
+     * @param password the password of the user to authenticate
+     * @return a SaTokenInfo object representing the authentication result
      */
     SaTokenInfo login(String username, String password);
 
     /**
-     * 注册功能
+     * Registers a new user with the specified user parameter.
+     *
+     * @param userParam the user parameter containing the information of the user to register
+     * @return a User object representing the registered user
      */
     User register(UserParam userParam);
 }
