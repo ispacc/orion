@@ -1,7 +1,7 @@
 package io.ispacc.orion.admin.module.chat.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
-import io.ispacc.orion.admin.core.constant.RedisConstant;
+import io.ispacc.orion.admin.core.constant.CacheConsts;
 import io.ispacc.orion.admin.core.utils.AssertUtil;
 import io.ispacc.orion.admin.module.admin.dao.UserDao;
 import io.ispacc.orion.admin.module.admin.dao.UserFriendDao;
@@ -180,16 +180,16 @@ public class ChatServiceImpl implements ChatService {
     private Set<Long> getUsersInOnline(Set<Long> userId) {
         if (userId.size() < 1) return new HashSet<>();
         //在线人数
-        Long onlineSize = redisTemplate.opsForSet().size(RedisConstant.websocket_online_users);
+        Long onlineSize = redisTemplate.opsForSet().size(CacheConsts.WEBSOCKET_ONLINE_USERS_NAME);
         //如果为null,按照无人在线处理
         if (onlineSize == null) return new HashSet<>();
         //如果在线人数过多的话,根据selectSize循环判断,否则获取所有onlineSize循环判断,节约内存
         if (onlineSize < 500) {
-            Set<String> onlineUserIds = redisTemplate.opsForSet().members(RedisConstant.websocket_online_users);
+            Set<String> onlineUserIds = redisTemplate.opsForSet().members(CacheConsts.WEBSOCKET_ONLINE_USERS_NAME);
             if (onlineUserIds == null) return new HashSet<>();
             return onlineUserIds.stream().map(Long::parseLong).filter(userId::contains).collect(Collectors.toSet());
         } else {
-            return userId.stream().filter(o -> redisTemplate.opsForSet().isMember(RedisConstant.websocket_online_users, o)).collect(Collectors.toSet());
+            return userId.stream().filter(o -> redisTemplate.opsForSet().isMember(CacheConsts.WEBSOCKET_ONLINE_USERS_NAME, o)).collect(Collectors.toSet());
         }
     }
 }
