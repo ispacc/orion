@@ -9,7 +9,6 @@ server:
 
 sa-token:
   token-name: orion-token
-  token-prefix: Bearer
   timeout: 3600
   active-timeout: 7200
   is-concurrent: false

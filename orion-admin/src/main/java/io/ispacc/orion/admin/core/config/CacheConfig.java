@@ -15,10 +15,16 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import java.time.Duration;
 
 @Configuration
-public class RedisConfig {
+public class CacheConfig {
 
+    /**
+     * Redis 缓存管理器
+     *
+     * @param connectionFactory the Redis connection factory
+     * @return the Redis cache manager
+     */
     @Bean
-    public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
+    public RedisCacheManager redisCacheManager(RedisConnectionFactory connectionFactory) {
         FastJsonRedisSerializer<Object> fastJsonRedisSerializer = new FastJsonRedisSerializer<>(Object.class);
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
@@ -43,8 +49,6 @@ public class RedisConfig {
         // value值的序列化采用fastJsonRedisSerializer
         redisTemplate.setValueSerializer(fastJsonRedisSerializer);
         redisTemplate.setHashValueSerializer(fastJsonRedisSerializer);
-        // 全局开启AutoType，不建议使用
-        // ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
         // 建议使用这种方式，小范围指定白名单，需要序列化的类
         JSONFactory.getDefaultObjectReaderProvider().addAutoTypeAccept("io.ispacc.orion.admin");
         // key的序列化采用StringRedisSerializer

@@ -1,6 +1,6 @@
 package io.ispacc.orion.admin.module.websocket.listener;
 
-import io.ispacc.orion.admin.core.constant.RedisConstant;
+import io.ispacc.orion.admin.core.constant.CacheConsts;
 import io.ispacc.orion.admin.core.constant.WebSocketConstant;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -40,7 +40,7 @@ public class WebSocketEventListener {
         if (userId == null) {
             return;
         }
-        redisTemplate.opsForSet().add(RedisConstant.websocket_online_users, userId);
+        redisTemplate.opsForSet().add(CacheConsts.WEBSOCKET_ONLINE_USERS_NAME, userId);
     }
 
     //监听连接断开事件 删除在线用户
@@ -52,7 +52,7 @@ public class WebSocketEventListener {
         if (userId == null) {
             return;
         }
-        redisTemplate.opsForSet().remove(RedisConstant.websocket_online_users, userId);
+        redisTemplate.opsForSet().remove(CacheConsts.WEBSOCKET_ONLINE_USERS_NAME, userId);
         //todo 循环发送事件,退出群组,告诉好友,俺不在线
     }
 
