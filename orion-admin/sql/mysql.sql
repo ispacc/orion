@@ -64,3 +64,51 @@ CREATE TABLE `ums_user_friend`
     FOREIGN KEY (friend_user_id) REFERENCES ums_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+create table file_config
+(
+    id             BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
+    file_root_path varchar(255) COMMENT '文件存储根路径',
+    max_size       BIGINT COMMENT '最大存储限制 单位 B字节',
+    use_size       BIGINT COMMENT '已经使用存储 单位 B字节',
+    create_time    DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+) comment '文件配置';
+
+insert into file_config(id, file_root_path, max_size, use_size) value (1, '/orion', 100000000, 0);
+
+create table file_info
+(
+    id          BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
+    file_name   varchar(255) COMMENT '文件名',
+    file_url    varchar(255) comment '文件路径',
+    file_size   BIGINT comment '文件大小 单位 B字节',
+    file_md5    varchar(255) comment '文件md5 用于校验文件是否存在',
+    config_id   BIGINT comment '文件配置id',
+    create_user BIGINT comment '创建用户',
+    status      int comment '文件状态 1表示正常可用 2表示等待传输中',
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    FOREIGN KEY (config_id) REFERENCES file_config (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (create_user) REFERENCES ums_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
+) comment '文件信息';
+
+create table file_upload_info
+(
+    id              BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
+    file_info_id    BIGINT comment '文件信息id',
+    file_chunk_num  int comment '总块数',
+    file_chunk_size int comment '每块大小 B',
+    local_url       varchar(255) comment '客户端文件地址',
+    create_time     DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    FOREIGN KEY (file_info_id) REFERENCES file_info (id) ON DELETE CASCADE ON UPDATE CASCADE
+) comment '文件上传 总配置';
+
+
+create table file_update
+(
+    id                  BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT 'id',
+    file_url            varchar(255) comment '文件路径',
+    file_chunk          int comment '块下标',
+    file_md5            varchar(255) comment '块md5',
+    file_upload_info_id BIGINT comment '文件上传 id',
+    create_time         DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    FOREIGN KEY (file_upload_info_id) REFERENCES file_upload_info (id) ON DELETE CASCADE ON UPDATE CASCADE
+) comment '文件上传 分片';
