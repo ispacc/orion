@@ -2,10 +2,10 @@ spring:
   profiles:
     active: test
   application:
-    name: orion-chat
+    name: orion-auth
 
 server:
-  port: 8081
+  port: 8082
 
 knife4j:
   enable: true
