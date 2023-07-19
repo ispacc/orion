@@ -2,20 +2,10 @@ spring:
   profiles:
     active: test
   application:
-    name: orion-admin
+    name: orion-chat
 
 server:
   port: 8081
-
-sa-token:
-  token-name: orion-token
-  timeout: 3600
-  active-timeout: 7200
-  is-concurrent: false
-  is-share: true
-  token-style: uuid
-  is-log: true
-
 
 knife4j:
   enable: true
@@ -29,3 +19,13 @@ mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
   # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
   type-aliases-package: io.ispacc.orion
+
+# Sa-Token 配置
+sa-token:
+
+  # ------- SSO-模式二相关配置
+  sso:
+    # Ticket有效期 (单位: 秒)，默认五分钟
+    ticket-timeout: 300
+    # 所有允许的授权回调地址
+    allow-url: "*"
