@@ -23,6 +23,8 @@
         <module>orion-pay</module>
         <module>orion-message</module>
         <module>orion-admin</module>
+        <module>orion-order</module>
+        <module>orion-example</module>
     </modules>
 
     <properties>
