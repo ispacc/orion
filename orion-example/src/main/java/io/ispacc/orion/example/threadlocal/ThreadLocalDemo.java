@@ -37,6 +37,7 @@ public class ThreadLocalDemo {
                     valueField.setAccessible(true);
                     referenceField.setAccessible(true);
                     System.out.printf("弱引用key:%s,值:%s%n", referenceField.get(o), valueField.get(o));
+                    String a = "1";
                 }
             }
         } catch (Exception e) {
