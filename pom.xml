@@ -16,6 +16,17 @@
     <description>orion</description>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>orion-common</module>
+        <module>orion-chat</module>
+        <module>orion-auth</module>
+        <module>orion-pay</module>
+        <module>orion-message</module>
+        <module>orion-admin</module>
+        <module>orion-order</module>
+        <module>orion-example</module>
+    </modules>
+
     <properties>
         <!-- 项目版本 -->
         <project.version>0.0.1</project.version>
@@ -35,15 +46,10 @@
         <hutool-all.version>5.8.20</hutool-all.version>
         <minio.version>8.5.4</minio.version>
         <sa-token.version>1.35.0.RC</sa-token.version>
+        <sa-token-sso.version>1.35.0.RC</sa-token-sso.version>
+        <encoder.version>1.2.3</encoder.version>
+        <rocketmq-client-java-version>5.0.5</rocketmq-client-java-version>
     </properties>
-
-    <modules>
-        <module>orion-admin</module>
-        <module>orion-common</module>
-        <module>orion-auth</module>
-        <module>orion-pay</module>
-        <module>orion-message</module>
-    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -78,6 +84,12 @@
             </dependency>
 
             <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-sso</artifactId>
+                <version>${sa-token-sso.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
@@ -87,6 +99,12 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.owasp.encoder</groupId>
+                <artifactId>encoder</artifactId>
+                <version>${encoder.version}</version>
             </dependency>
 
         </dependencies>
