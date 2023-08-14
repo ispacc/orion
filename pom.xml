@@ -39,7 +39,7 @@
 
         <!-- 第三方依赖版本 -->
         <snakeyaml.version>2.0</snakeyaml.version>
-        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <mybatis-plus.version>3.5.3.2</mybatis-plus.version>
         <jjwt.version>0.11.5</jjwt.version>
         <fastjson2.version>2.0.35</fastjson2.version>
         <knife4j.version>4.1.0</knife4j.version>
