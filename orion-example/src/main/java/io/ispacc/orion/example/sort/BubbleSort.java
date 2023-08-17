@@ -12,7 +12,6 @@ public class BubbleSort {
     static void sort(int[] arr) {
         int length = arr.length;
         for (int i = length - 1; i > 0; i--) {
-            // 如果本轮未进行任何更换，可判断已完成排序
             boolean flag = false;
             for (int j = 0; j < i; j++) {
                 if (arr[j] > arr[j + 1]) {

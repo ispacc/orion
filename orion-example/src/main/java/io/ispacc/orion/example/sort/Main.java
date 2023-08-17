@@ -19,6 +19,9 @@ public class Main {
         print("冒泡排序");
     }
 
+    @Test
+    public void test1() {
+    }
 
     private void print(String sortName) {
         System.out.print(sortName + ": ");
