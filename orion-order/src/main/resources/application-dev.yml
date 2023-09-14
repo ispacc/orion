@@ -1,0 +1,24 @@
+spring:
+  data:
+    redis:
+      host: 127.0.0.1
+      database: 0
+      port: 6379
+      password:
+      timeout: 250ms
+      lettuce:
+        pool:
+          min-idle: 0
+          max-idle: 8
+          max-active: 8
+          max-wait: -1ms
+  datasource:
+    url: jdbc:mysql://localhost:3306/orion?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123
+
+minio:
+  endpoint: http://localhost:9000 #MinIO服务所在地址
+  bucketName: orion #存储桶名称
+  accessKey: 2C5N8EgMmWNSLdVBZQUr #访问的key
+  secretKey: K6QuGbsk05Xy6ePZ7GVvCO73AzD9rHp1D1V4z6cn #访问的秘钥
