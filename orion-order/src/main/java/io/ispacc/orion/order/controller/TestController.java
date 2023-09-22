@@ -14,7 +14,7 @@ public class TestController {
 
     @DeleteMapping("/del")
     @SaIgnore
-    public void del() {
-        testService.method1();
+    public Long del() {
+        return testService.method1();
     }
 }
