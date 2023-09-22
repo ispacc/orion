@@ -43,7 +43,7 @@
         <jjwt.version>0.11.5</jjwt.version>
         <fastjson2.version>2.0.35</fastjson2.version>
         <knife4j.version>4.1.0</knife4j.version>
-        <hutool-all.version>5.8.20</hutool-all.version>
+        <hutool-all.version>5.8.22</hutool-all.version>
         <minio.version>8.5.4</minio.version>
         <sa-token.version>1.35.0.RC</sa-token.version>
         <sa-token-sso.version>1.35.0.RC</sa-token-sso.version>
