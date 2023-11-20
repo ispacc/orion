@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.1</version>
+        <version>3.1.5</version>
     </parent>
 
     <groupId>io.ispacc</groupId>
@@ -20,10 +20,8 @@
         <module>orion-common</module>
         <module>orion-chat</module>
         <module>orion-auth</module>
-        <module>orion-pay</module>
         <module>orion-message</module>
         <module>orion-admin</module>
-        <module>orion-order</module>
         <module>orion-example</module>
     </modules>
 
@@ -34,8 +32,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Java编译和运行版本 -->
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
         <!-- 第三方依赖版本 -->
         <snakeyaml.version>2.0</snakeyaml.version>
